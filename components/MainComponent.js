@@ -48,6 +48,24 @@ const DonationsNavigator = createStackNavigator(
     }
 );
 
+const DirectoryNavigator = createStackNavigator(
+    {
+        Directory: { screen: Directory }
+    }, 
+    {
+        initialRouteName: 'Directory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
 const AboutNavigator = createStackNavigator(
     {
         About: { screen: About }
@@ -107,6 +125,7 @@ const SaveDateNavigator = createStackNavigator(
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
+        Directory: { screen: DirectoryNavigator },
         Donations: { screen: DonationsNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
