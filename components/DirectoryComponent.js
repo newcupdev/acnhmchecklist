@@ -8,15 +8,16 @@ function Directory(props) {
         return (
             <ListItem
                 title={item.name}
-                subtitle={item.description}
-                leftAvatar={{ source: require('./images/react-lake.jpg')}}
+                subtitle={item.catchphrase}
+                //leftAvatar={{ source: require('./images/react-lake.jpg')}}
+                leftAvatar={{ source: {uri: 'https://acnhapi.com/v1/icons/fish/1'}}}
             />
         );
     };
 
     return (
         <FlatList
-            data={props.campsites}
+            data={props.fishes}
             renderItem={renderDirectoryItem}
             keyExtractor={item => item.id.toString()}
         />
