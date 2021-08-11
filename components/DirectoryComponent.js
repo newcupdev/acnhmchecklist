@@ -10,7 +10,7 @@ function Directory(props) {
                 title={item.name}
                 subtitle={item.catchphrase}
                 //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                leftAvatar={{ source: {uri: 'https://acnhapi.com/v1/icons/fish/1'}}}
+                leftAvatar={{ source: {uri: item.icon}}}
             />
         );
     };
