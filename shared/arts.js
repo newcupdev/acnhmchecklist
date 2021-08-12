@@ -5,7 +5,7 @@ export const ARTS = [
         hasFake: true,
         buyprice: 4980,
         sellprice: 1245,
-        museumphrase: "This drawing is based on the ideal\ human-body ratio, as stated in De architectura. De architectura was a treatise by Vitruvius, an architect from the early 1st century BCE.",
+        museumphrase: "This drawing is based on the ideal human-body ratio, as stated in De architectura. De architectura was a treatise by Vitruvius, an architect from the early 1st century BCE.",
         image: "https://acnhapi.com/v1/images/art/academic_painting"
     },
     {

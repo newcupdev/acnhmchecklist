@@ -558,5 +558,5 @@ export const SEACREATURES = [
         museumphrase: "The Venus' flower basket looks like an otherworldly creature one would find on an alien planet. But it is instead a remarkable sea sponge found in the deepest parts of the ocean. Its body is composed of silica and looks like a sculpture or, perhaps, a vase made of glassy mesh. I daresay Venus' flower basket is one of nature's most impressive works of art.",
         image: "https://acnhapi.com/v1/images/sea/40",
         icon: "https://acnhapi.com/v1/icons/sea/40"
-    },
+    }
 ];

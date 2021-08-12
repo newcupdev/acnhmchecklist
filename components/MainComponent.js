@@ -2,16 +2,22 @@ import React, { Component } from 'react';
 import Directory from './DirectoryComponent';
 import { CAMPSITES } from '../shared/campsites';
 import Home from './HomeComponent';
+import CrittersDirectory from './CrittersDirectoryComponent';
+import BugInfo from './BugInfoComponent';
 import Donations from './DonationsComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import SaveDate from './SaveDateComponent';
 import { FISHES } from '../shared/fishes';
+import { BUGS } from '../shared/bugs';
 import Constants from 'expo-constants';
-import { View, Platform } from 'react-native';
+import { View, Platform, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
-import { createDrawerNavigator } from 'react-navigation-drawer';
+import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
+import SafeAreaView from 'react-native-safe-area-view';
+
+
 
 const HomeNavigator = createStackNavigator(
     {
@@ -54,6 +60,25 @@ const DirectoryNavigator = createStackNavigator(
     }, 
     {
         initialRouteName: 'Directory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
+const CrittersDirectoryNavigator = createStackNavigator(
+    {
+        CrittersDirectory: { screen: CrittersDirectory },
+        BugInfo: {screen: BugInfo}
+    }, 
+    {
+        initialRouteName: 'CrittersDirectory',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#5637DD'
@@ -120,19 +145,39 @@ const SaveDateNavigator = createStackNavigator(
     }
 );
 
-
+const CustomDrawerContentComponent = props => (
+    <ScrollView>
+        <SafeAreaView 
+            style={styles.container}
+            forceInset={{top: 'always', horizontal: 'never'}}>
+            <View style={styles.drawerHeader}>
+                <View style={{flex: 1}}>
+                    <Image source={require('./images/blathers_icon.png')} style={styles.drawerImage} />
+                </View>
+                <View style={{flex: 2}}>
+                    <Text style={{fontWeight: "bold", color: "#fff"}}>Animal Crossing:</Text>
+                    <Text style={{fontStyle: "italic", color: "#fff", marginLeft: 50}}>New Horizon</Text>
+                    <Text style={styles.drawerHeaderText}>Museum Tracker</Text>
+                </View>
+            </View>
+            <DrawerItems {...props} />
+        </SafeAreaView>
+    </ScrollView>
+);
 
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
         Directory: { screen: DirectoryNavigator },
+        CrittersDirectory: { screen: CrittersDirectoryNavigator },
         Donations: { screen: DonationsNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
         SaveDate: {screen: SaveDateNavigator}
     },
     {
-        drawerBackgroundColor: '#CEC8FF'
+        drawerBackgroundColor: '#CEC8FF',
+        contentComponent: CustomDrawerContentComponent
     }
 );
 
@@ -142,7 +187,8 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fishes: FISHES
+            fishes: FISHES,
+            bugs: BUGS
         };
     }
 
@@ -159,5 +205,38 @@ class Main extends Component {
         );
     }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    drawerHeader: {
+        backgroundColor: '#5637DD',
+        height: 140,
+        alignItems: 'center',
+        justifyContent: 'center',
+        flex: 1,
+        flexDirection: 'row'
+    },
+    drawerHeaderText: {
+        color: '#fff',
+        fontSize: 22,
+        fontWeight: 'bold'
+    },
+    drawerImage: {
+        margin: 10,
+        height: 70,
+        width: 70,
+        borderRadius: 50,
+        borderColor: "#fff",
+        borderWidth: 3
+    },
+    stackIcon: {
+        marginLeft: 10,
+        color: '#fff',
+        fontSize: 24
+    }
+});
+
 
 export default Main;
