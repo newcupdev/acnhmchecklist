@@ -6,6 +6,8 @@ import BugsDirectory from './BugsDirectoryComponent';
 import FishesDirectory from './FishesDirectoryComponent';
 import SeacreaturesDirectory from './SeacreaturesDirectoryComponent';
 import BugInfo from './BugInfoComponent';
+import FishInfo from './FishInfoComponent';
+import SeacreatureInfo from './SeacreatureInfoComponent';
 import Donations from './DonationsComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
@@ -100,7 +102,8 @@ const BugsDirectoryNavigator = createStackNavigator(
 
 const FishesDirectoryNavigator = createStackNavigator(
     {
-        FishesDirectory: { screen: FishesDirectory }
+        FishesDirectory: { screen: FishesDirectory },
+        FishInfo: {screen: FishInfo}
     }, 
     {
         initialRouteName: 'FishesDirectory',
@@ -118,7 +121,8 @@ const FishesDirectoryNavigator = createStackNavigator(
 
 const SeacreaturesDirectoryNavigator = createStackNavigator(
     {
-        SeacreaturesDirectory: { screen: SeacreaturesDirectory }
+        SeacreaturesDirectory: { screen: SeacreaturesDirectory },
+        SeacreatureInfo: {screen: SeacreatureInfo}
     }, 
     {
         initialRouteName: 'SeacreaturesDirectory',

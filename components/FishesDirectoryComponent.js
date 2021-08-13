@@ -25,7 +25,7 @@ class FishesDirectory extends Component {
                     title={item.name}
                     subtitle={item.catchphrase}
                     //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                    //onPress={() => navigate('BugInfo', { bugId: item.id })}
+                    onPress={() => navigate('FishInfo', { fishId: item.id })}
                     leftAvatar={{ source: {uri: item.icon}}}
                 />
             );
