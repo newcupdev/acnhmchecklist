@@ -6,6 +6,7 @@ import BugsDirectory from './BugsDirectoryComponent';
 import FishesDirectory from './FishesDirectoryComponent';
 import SeacreaturesDirectory from './SeacreaturesDirectoryComponent';
 import ArtsDirectory from './ArtsDirectoryComponent';
+import FossilsDirectory from './FossilsDirectoryComponent';
 import BugInfo from './BugInfoComponent';
 import FishInfo from './FishInfoComponent';
 import SeacreatureInfo from './SeacreatureInfoComponent';
@@ -161,6 +162,25 @@ const ArtsDirectoryNavigator = createStackNavigator(
     }
 );
 
+const FossilsDirectoryNavigator = createStackNavigator(
+    {
+        FossilsDirectory: { screen: FossilsDirectory }
+        
+    }, 
+    {
+        initialRouteName: 'FossilsDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
 // const CrittersDirectoryNavigator = createStackNavigator(
 //     {
 //         CrittersDirectory: { screen: CrittersDirectory },
@@ -264,6 +284,7 @@ const MainNavigator = createDrawerNavigator(
         FishesDirectory: { screen: FishesDirectoryNavigator },
         SeacreaturesDirectory: { screen: SeacreaturesDirectoryNavigator },
         ArtsDirectory: { screen: ArtsDirectoryNavigator },
+        FossilsDirectory: { screen: FossilsDirectoryNavigator },
         //CrittersDirectory: { screen: CrittersDirectoryNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
