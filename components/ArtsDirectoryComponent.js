@@ -42,8 +42,8 @@ class ArtsDirectory extends Component {
         this.setState({showModal: !this.state.showModal});
     }
 
-    showArt(){
-        //console.log('show art modal');
+    showArt(artId){
+        console.log(artId);
         this.toggleModal();
     }
 
@@ -63,7 +63,7 @@ class ArtsDirectory extends Component {
                         //onPress={() => navigate('BugInfo', { bugId: item.id })}
                         
                         leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
-                        onPress={() => this.showArt()}
+                        onPress={() => this.showArt(item.id)}
                     />
                     
                 </View>
