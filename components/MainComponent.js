@@ -19,12 +19,14 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
-import { fetchBugs, fetchFishes, fetchSeacreatures } from '../redux/ActionCreators';
+import { fetchBugs, fetchFishes, fetchSeacreatures, fetchArts, fetchFossils } from '../redux/ActionCreators';
 
 const mapDispatchToProps = {
     fetchBugs,
     fetchFishes,
-    fetchSeacreatures
+    fetchSeacreatures,
+    fetchArts,
+    fetchFossils
 };
 
 

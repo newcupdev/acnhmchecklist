@@ -4,6 +4,8 @@ import logger from 'redux-logger';
 import { bugs } from './bugs';
 import { fishes } from './fishes';
 import { seacreatures } from './seacreatures';
+import { arts } from './arts';
+import { fossils } from './fossils';
 
 
 export const ConfigureStore = () => {
@@ -11,7 +13,9 @@ export const ConfigureStore = () => {
         combineReducers({
             bugs,
             fishes,
-            seacreatures
+            seacreatures,
+            arts,
+            fossils
         }),
         applyMiddleware(thunk, logger)
     );

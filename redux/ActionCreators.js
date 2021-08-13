@@ -112,6 +112,80 @@ export const addSeacreatures = seacreatures => ({
     payload: seacreatures
 });
 
+export const fetchArts = () => dispatch => {
+
+    dispatch(artsLoading());
+
+    return fetch(baseUrl + 'arts')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            })
+        .then(response => response.json())
+        .then(arts => dispatch(addArts(arts)))
+        .catch(error => dispatch(artsFailed(error.message)));
+};
+
+export const artsLoading = () => ({
+    type: ActionTypes.ARTS_LOADING
+});
+
+export const artsFailed = errMess => ({
+    type: ActionTypes.ARTS_FAILED,
+    payload: errMess
+});
+
+export const addArts = arts => ({
+    type: ActionTypes.ADD_ARTS,
+    payload: arts
+});
+
+export const fetchFossils = () => dispatch => {
+
+    dispatch(fossilsLoading());
+
+    return fetch(baseUrl + 'fossils')
+        .then(response => {
+                if (response.ok) {
+                    return response;
+                } else {
+                    const error = new Error(`Error ${response.status}: ${response.statusText}`);
+                    error.response = response;
+                    throw error;
+                }
+            },
+            error => {
+                const errMess = new Error(error.message);
+                throw errMess;
+            })
+        .then(response => response.json())
+        .then(fossils => dispatch(addFossils(fossils)))
+        .catch(error => dispatch(fossilsFailed(error.message)));
+};
+
+export const fossilsLoading = () => ({
+    type: ActionTypes.FOSSILS_LOADING
+});
+
+export const fossilsFailed = errMess => ({
+    type: ActionTypes.FOSSILS_FAILED,
+    payload: errMess
+});
+
+export const addFossils = fossils => ({
+    type: ActionTypes.ADD_FOSSILS,
+    payload: fossils
+});
+
 
 
 
