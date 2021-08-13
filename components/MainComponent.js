@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import Directory from './DirectoryComponent';
-import { CAMPSITES } from '../shared/campsites';
 import Home from './HomeComponent';
 import CrittersDirectory from './CrittersDirectoryComponent';
+import BugsDirectory from './BugsDirectoryComponent';
 import BugInfo from './BugInfoComponent';
 import Donations from './DonationsComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import SaveDate from './SaveDateComponent';
-import { FISHES } from '../shared/fishes';
-import { BUGS } from '../shared/bugs';
 import Constants from 'expo-constants';
 import { View, Platform, Text, StyleSheet, ScrollView, Image } from 'react-native';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -17,10 +15,12 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
-import { fetchBugs } from '../redux/ActionCreators';
+import { fetchBugs, fetchFishes, fetchSeacreatures } from '../redux/ActionCreators';
 
 const mapDispatchToProps = {
-    fetchBugs
+    fetchBugs,
+    fetchFishes,
+    fetchSeacreatures
 };
 
 
@@ -59,12 +59,31 @@ const DonationsNavigator = createStackNavigator(
     }
 );
 
-const DirectoryNavigator = createStackNavigator(
+// const DirectoryNavigator = createStackNavigator(
+//     {
+//         Directory: { screen: Directory }
+//     }, 
+//     {
+//         initialRouteName: 'Directory',
+//         defaultNavigationOptions: {
+//             headerStyle: {
+//                 backgroundColor: '#5637DD'
+//             },
+//             headerTintColor: '#fff',
+//             headerTitleStyle: {
+//                 color: '#fff'
+//             }
+//         }
+//     }
+// );
+
+const BugsDirectoryNavigator = createStackNavigator(
     {
-        Directory: { screen: Directory }
+        BugsDirectory: { screen: BugsDirectory },
+        BugInfo: {screen: BugInfo}
     }, 
     {
-        initialRouteName: 'Directory',
+        initialRouteName: 'BugsDirectory',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#5637DD'
@@ -77,24 +96,25 @@ const DirectoryNavigator = createStackNavigator(
     }
 );
 
-const CrittersDirectoryNavigator = createStackNavigator(
-    {
-        CrittersDirectory: { screen: CrittersDirectory },
-        BugInfo: {screen: BugInfo}
-    }, 
-    {
-        initialRouteName: 'CrittersDirectory',
-        defaultNavigationOptions: {
-            headerStyle: {
-                backgroundColor: '#5637DD'
-            },
-            headerTintColor: '#fff',
-            headerTitleStyle: {
-                color: '#fff'
-            }
-        }
-    }
-);
+// const CrittersDirectoryNavigator = createStackNavigator(
+//     {
+//         CrittersDirectory: { screen: CrittersDirectory },
+//         BugsDirectory: {screen: BugsDirectory},
+//         BugInfo: {screen: BugInfo}
+//     }, 
+//     {
+//         initialRouteName: 'CrittersDirectory',
+//         defaultNavigationOptions: {
+//             headerStyle: {
+//                 backgroundColor: '#5637DD'
+//             },
+//             headerTintColor: '#fff',
+//             headerTitleStyle: {
+//                 color: '#fff'
+//             }
+//         }
+//     }
+// );
 
 const AboutNavigator = createStackNavigator(
     {
@@ -173,8 +193,9 @@ const CustomDrawerContentComponent = props => (
 const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
-        Directory: { screen: DirectoryNavigator },
-        CrittersDirectory: { screen: CrittersDirectoryNavigator },
+        //Directory: { screen: DirectoryNavigator },
+        BugsDirectory: { screen: BugsDirectoryNavigator },
+        //CrittersDirectory: { screen: CrittersDirectoryNavigator },
         Donations: { screen: DonationsNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
@@ -189,15 +210,11 @@ const MainNavigator = createDrawerNavigator(
 const AppNavigator = createAppContainer(MainNavigator);
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            fishes: FISHES
-        };
-    }
 
     componentDidMount() {
         this.props.fetchBugs();
+        this.props.fetchFishes();
+        this.props.fetchSeacreatures();
     }
 
     render() {
