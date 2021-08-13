@@ -3,6 +3,8 @@ import Directory from './DirectoryComponent';
 import Home from './HomeComponent';
 import CrittersDirectory from './CrittersDirectoryComponent';
 import BugsDirectory from './BugsDirectoryComponent';
+import FishesDirectory from './FishesDirectoryComponent';
+import SeacreaturesDirectory from './SeacreaturesDirectoryComponent';
 import BugInfo from './BugInfoComponent';
 import Donations from './DonationsComponent';
 import About from './AboutComponent';
@@ -84,6 +86,42 @@ const BugsDirectoryNavigator = createStackNavigator(
     }, 
     {
         initialRouteName: 'BugsDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
+const FishesDirectoryNavigator = createStackNavigator(
+    {
+        FishesDirectory: { screen: FishesDirectory }
+    }, 
+    {
+        initialRouteName: 'FishesDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
+const SeacreaturesDirectoryNavigator = createStackNavigator(
+    {
+        SeacreaturesDirectory: { screen: SeacreaturesDirectory }
+    }, 
+    {
+        initialRouteName: 'SeacreaturesDirectory',
         defaultNavigationOptions: {
             headerStyle: {
                 backgroundColor: '#5637DD'
@@ -194,9 +232,11 @@ const MainNavigator = createDrawerNavigator(
     {
         Home: { screen: HomeNavigator },
         //Directory: { screen: DirectoryNavigator },
-        BugsDirectory: { screen: BugsDirectoryNavigator },
-        //CrittersDirectory: { screen: CrittersDirectoryNavigator },
         Donations: { screen: DonationsNavigator },
+        BugsDirectory: { screen: BugsDirectoryNavigator },
+        FishesDirectory: { screen: FishesDirectoryNavigator },
+        SeacreaturesDirectory: { screen: SeacreaturesDirectoryNavigator },
+        //CrittersDirectory: { screen: CrittersDirectoryNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
         SaveDate: {screen: SaveDateNavigator}
