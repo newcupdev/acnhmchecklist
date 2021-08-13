@@ -5,6 +5,7 @@ import CrittersDirectory from './CrittersDirectoryComponent';
 import BugsDirectory from './BugsDirectoryComponent';
 import FishesDirectory from './FishesDirectoryComponent';
 import SeacreaturesDirectory from './SeacreaturesDirectoryComponent';
+import ArtsDirectory from './ArtsDirectoryComponent';
 import BugInfo from './BugInfoComponent';
 import FishInfo from './FishInfoComponent';
 import SeacreatureInfo from './SeacreatureInfoComponent';
@@ -19,6 +20,7 @@ import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import SafeAreaView from 'react-native-safe-area-view';
 import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
 import { fetchBugs, fetchFishes, fetchSeacreatures, fetchArts, fetchFossils } from '../redux/ActionCreators';
 
 const mapDispatchToProps = {
@@ -140,6 +142,25 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
     }
 );
 
+const ArtsDirectoryNavigator = createStackNavigator(
+    {
+        ArtsDirectory: { screen: ArtsDirectory }
+        
+    }, 
+    {
+        initialRouteName: 'ArtsDirectory',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: '#5637DD'
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
+                color: '#fff'
+            }
+        }
+    }
+);
+
 // const CrittersDirectoryNavigator = createStackNavigator(
 //     {
 //         CrittersDirectory: { screen: CrittersDirectory },
@@ -221,7 +242,7 @@ const CustomDrawerContentComponent = props => (
             forceInset={{top: 'always', horizontal: 'never'}}>
             <View style={styles.drawerHeader}>
                 <View style={{flex: 1}}>
-                    <Image source={require('./images/blathers_icon.png')} style={styles.drawerImage} />
+                    <Image source={{uri: baseUrl + 'images/blathers_icon.png'}} style={styles.drawerImage} />
                 </View>
                 <View style={{flex: 2}}>
                     <Text style={{fontWeight: "bold", color: "#fff"}}>Animal Crossing:</Text>
@@ -242,6 +263,7 @@ const MainNavigator = createDrawerNavigator(
         BugsDirectory: { screen: BugsDirectoryNavigator },
         FishesDirectory: { screen: FishesDirectoryNavigator },
         SeacreaturesDirectory: { screen: SeacreaturesDirectoryNavigator },
+        ArtsDirectory: { screen: ArtsDirectoryNavigator },
         //CrittersDirectory: { screen: CrittersDirectoryNavigator },
         About: {screen: AboutNavigator},
         Contact: {screen: ContactNavigator},
@@ -261,6 +283,8 @@ class Main extends Component {
         this.props.fetchBugs();
         this.props.fetchFishes();
         this.props.fetchSeacreatures();
+        this.props.fetchArts();
+        this.props.fetchFossils();
     }
 
     render() {
