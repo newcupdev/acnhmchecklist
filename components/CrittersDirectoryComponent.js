@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import { FlatList } from 'react-native';
 import { ListItem } from 'react-native-elements';
-import { BUGS } from '../shared/bugs';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        bugs: state.bugs
+    };
+};
 
 class CrittersDirectory extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            bugs: BUGS
-        };
-    }
 
     static navigationOptions = {
         title: 'Critters Directory'
@@ -32,7 +32,7 @@ class CrittersDirectory extends Component {
     
         return (
             <FlatList
-                data={this.state.bugs}
+                data={this.props.bugs.bugs}
                 renderItem={renderCritterDirectoryItem}
                 keyExtractor={item => item.id.toString()}
             />
@@ -42,4 +42,4 @@ class CrittersDirectory extends Component {
     
 }
 
-export default CrittersDirectory;
+export default connect(mapStateToProps)(CrittersDirectory);

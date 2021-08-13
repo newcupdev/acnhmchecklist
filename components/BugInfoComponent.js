@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Card, Tile } from 'react-native-elements';
-import { BUGS } from '../shared/bugs';
+import { connect } from 'react-redux';
+import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        bugs: state.bugs
+    };
+};
+
+
 
 function RenderBug({bug}) {
 
@@ -46,20 +55,13 @@ function RenderBug({bug}) {
 
 class BugInfo extends Component {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            bugs: BUGS
-        };
-    }
-
     static navigationOptions = {
         title: 'Bug Information'
     }
 
     render() {
         const bugId = this.props.navigation.getParam('bugId');
-        const bug = this.state.bugs.filter(bug => bug.id === bugId)[0];
+        const bug = this.props.bugs.bugs.filter(bug => bug.id === bugId)[0];
         return <RenderBug bug={bug} />;
     }
 }
@@ -70,4 +72,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default BugInfo;
+export default connect(mapStateToProps)(BugInfo);

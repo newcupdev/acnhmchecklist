@@ -16,7 +16,12 @@ import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
 import SafeAreaView from 'react-native-safe-area-view';
+import { connect } from 'react-redux';
+import { fetchBugs } from '../redux/ActionCreators';
 
+const mapDispatchToProps = {
+    fetchBugs
+};
 
 
 const HomeNavigator = createStackNavigator(
@@ -187,9 +192,12 @@ class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            fishes: FISHES,
-            bugs: BUGS
+            fishes: FISHES
         };
+    }
+
+    componentDidMount() {
+        this.props.fetchBugs();
     }
 
     render() {
@@ -239,4 +247,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default Main;
+export default connect(null, mapDispatchToProps)(Main);
