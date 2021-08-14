@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { Card, Tile } from 'react-native-elements';
+import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { postBugDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
-        bugs: state.bugs
+        bugs: state.bugs,
+        bugDonations: state.bugDonations
     };
+};
+
+const mapDispatchToProps = {
+    postBugDonation: bugId => (postBugDonation(bugId))
 };
 
 
 
-function RenderBug({bug}) {
+function RenderBug(props) {
+
+    const {bug} = props;
 
     if (bug) {
         return (
@@ -20,6 +28,7 @@ function RenderBug({bug}) {
                 <ScrollView style={{backgroundColor: '#FFDAB9'}}>
                     <Tile
                         imageSrc={{uri: bug.image}}
+                        featured
                     />
 
                     <Card
@@ -41,7 +50,20 @@ function RenderBug({bug}) {
                         <Text>{'\t'}{bug.catchphrase}</Text>
 
                         <Text style={styles.textLabel}>Blather's catchphrase: </Text>
-                        <Text>{'\t'}{bug.museumphrase}</Text>
+                        <Text style={{marginBottom: 20}}>{'\t'}{bug.museumphrase}</Text>
+
+                        <View style={{alignItems: 'center'}}>
+                            <Icon
+                                name={props.bugDonation ? 'check-circle-o' : 'circle-o'}
+                                type='font-awesome'
+                                color='#2E8B57'
+                                raised
+                                reverse
+                                size = {30}
+                                onPress={() => props.bugDonation ? 
+                                    console.log('Already set as a favorite') : props.markBugDonation()}
+                            />
+                        </View>
 
                         
 
@@ -55,6 +77,12 @@ function RenderBug({bug}) {
 
 class BugInfo extends Component {
 
+
+    markBugDonation(bugId) {
+        this.props.postBugDonation(bugId);
+    }
+
+
     static navigationOptions = {
         title: 'Bug Information'
     }
@@ -62,7 +90,11 @@ class BugInfo extends Component {
     render() {
         const bugId = this.props.navigation.getParam('bugId');
         const bug = this.props.bugs.bugs.filter(bug => bug.id === bugId)[0];
-        return <RenderBug bug={bug} />;
+        return <RenderBug 
+            bug={bug} 
+            bugDonation = {this.props.bugDonations.includes(bugId)}
+            markBugDonation = {()=>this.markBugDonation(bugId)}
+        />;
     }
 }
 
@@ -72,4 +104,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps)(BugInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(BugInfo);

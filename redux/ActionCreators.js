@@ -187,6 +187,22 @@ export const addFossils = fossils => ({
 });
 
 
+export const postBugDonation = bugId => dispatch => {
+    setTimeout(() => {
+        dispatch(addBugDonation(bugId));
+    }, 1000);
+};
+
+export const addBugDonation = bugId => ({
+    type: ActionTypes.ADD_BUG_DONATION,
+    payload: bugId
+});
+
+export const deleteBugDonation = bugId => ({
+    type: ActionTypes.DELETE_BUG_DONATION,
+    payload: bugId
+}); 
+
 
 
 

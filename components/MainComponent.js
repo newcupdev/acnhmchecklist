@@ -13,6 +13,7 @@ import SeacreatureInfo from './SeacreatureInfoComponent';
 import ArtInfo from './ArtInfoComponent';
 import FossilInfo from './FossilInfoComponent';
 import Donations from './DonationsComponent';
+import BugDonations from './BugDonationsComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import SaveDate from './SaveDateComponent';
@@ -55,7 +56,8 @@ const HomeNavigator = createStackNavigator(
 
 const DonationsNavigator = createStackNavigator(
     {
-        Donations: { screen: Donations }
+        Donations: { screen: Donations },
+        BugDonations: { screen: BugDonations }
     }, 
     {
         initialRouteName: 'Donations',
@@ -70,6 +72,25 @@ const DonationsNavigator = createStackNavigator(
         }
     }
 );
+
+// const BugDonationsNavigator = createStackNavigator(
+//     {
+//         BugDonations: { screen: BugDonations },
+        
+//     }, 
+//     {
+//         initialRouteName: 'BugDonations',
+//         defaultNavigationOptions: {
+//             headerStyle: {
+//                 backgroundColor: '#F4A460'
+//             },
+//             headerTintColor: '#000',
+//             headerTitleStyle: {
+//                 color: '#000'
+//             }
+//         }
+//     }
+// );
 
 // const DirectoryNavigator = createStackNavigator(
 //     {
@@ -296,6 +317,7 @@ const MainNavigator = createDrawerNavigator(
             }
         },
         //Directory: { screen: DirectoryNavigator },
+
         Donations: { 
             screen: DonationsNavigator, 
             navigationOptions: {
@@ -310,6 +332,20 @@ const MainNavigator = createDrawerNavigator(
                 )
             }
         },
+        // BugDonations: { 
+        //     screen: BugDonationsNavigator, 
+        //     navigationOptions: {
+        //         drawerLabel: 'My Bug Donations',
+        //         drawerIcon: ({tintColor}) => (
+        //             <Icon
+        //                 name='box-open'
+        //                 type='font-awesome-5'
+        //                 size={18}
+        //                 color={tintColor}
+        //             />
+        //         )
+        //     }
+        // },
         BugsDirectory: { 
             screen: BugsDirectoryNavigator,
             navigationOptions: {

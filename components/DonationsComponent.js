@@ -10,13 +10,15 @@ class Donations extends Component {
     }
 
     render() {
+        const { navigate } = this.props.navigation;
         return(
             <ScrollView style={{backgroundColor: '#FFDAB9'}}>
                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'BUGS'
                     image={{uri: baseUrl + 'images/bug_bg.jpg'}}
+                    
                 >
-                    <Text style={{margin: 10}}>
+                    <Text style={{margin: 10}} onPress={() => navigate('BugDonations', null)}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 

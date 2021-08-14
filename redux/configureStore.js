@@ -6,6 +6,7 @@ import { fishes } from './fishes';
 import { seacreatures } from './seacreatures';
 import { arts } from './arts';
 import { fossils } from './fossils';
+import { bugDonations } from './bugDonations';
 
 
 export const ConfigureStore = () => {
@@ -15,7 +16,8 @@ export const ConfigureStore = () => {
             fishes,
             seacreatures,
             arts,
-            fossils
+            fossils,
+            bugDonations
         }),
         applyMiddleware(thunk, logger)
     );
