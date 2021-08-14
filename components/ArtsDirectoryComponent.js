@@ -11,29 +11,13 @@ const mapStateToProps = state => {
     };
 };
 
-function RenderArt({art}) {
-
-    if (art) {
-        return (
-            <View>
-                <ScrollView>
-                    <Card
-                        title= {art.name}
-                        wrapperStyle={{margin: 20}}>
-                    </Card>
-                </ScrollView>
-            </View>
-        );
-    }
-    return <View />;
-}
-
 class ArtsDirectory extends Component {
 
     constructor(props){
         super(props);
 
         this.state = {
+           
             showModal: false
         }
     }
@@ -44,6 +28,7 @@ class ArtsDirectory extends Component {
 
     showArt(artId){
         console.log(artId);
+        console.log(this.props.arts);
         this.toggleModal();
     }
 
@@ -53,19 +38,22 @@ class ArtsDirectory extends Component {
 
     render () {
         const { navigate } = this.props.navigation;
+        const artId = this.props.navigation.getParam('artId');
+        const art = this.props.arts.arts.filter(art => art.id === artId)[0];
         const renderArtDirectoryItem = ({item}) => {
             return (
                 <View>
-                    <ListItem
-                        title={item.name}
-                        //subtitle={item.catchphrase}
-                        //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                        //onPress={() => navigate('BugInfo', { bugId: item.id })}
-                        
-                        leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
-                        onPress={() => this.showArt(item.id)}
-                    />
-                    
+                    <View>
+                        <ListItem
+                            title={item.name}
+                            //subtitle={item.catchphrase}
+                            //leftAvatar={{ source: require('./images/react-lake.jpg')}}
+                            //onPress={() => navigate('BugInfo', { bugId: item.id })}
+                            
+                            leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
+                            onPress={() => this.showArt(item.name)}
+                        />
+                    </View>
                 </View>
             );
         };
@@ -82,40 +70,37 @@ class ArtsDirectory extends Component {
         }
     
         return (
+            
             <View>
+                
                 <FlatList
                     data={this.props.arts.arts}
                     renderItem={renderArtDirectoryItem}
                     keyExtractor={item => item.id.toString()}
                     
                 />
-
-                {/* <RenderArt art={art} 
-                                
-                                onShowModal={() => this.toggleModal()}
-                            /> */}
-
-                <Modal
-                    animationType={'slide'}
-                    transparent={false}
-                    visible={this.state.showModal}
-                    onRequestClose={() => this.toggleModal()}
-                >
-                    <View style={styles.modal}>
-                        <Text style={styles.modalText}>Test Name</Text>
-                        
-                        <Button
-                            onPress={() => {
-                                this.toggleModal();
-                            }}
-                            color='#5637DD'
-                            title='Close'
-                        />
-                    </View>
+            
+            <Modal
+                animationType={'slide'}
+                transparent={false}
+                visible={this.state.showModal}
+                onRequestClose={() => this.toggleModal()}
+            >
+                <View style={styles.modal}>
+                    <Text style={styles.modalText}>{this.props.arts.name}</Text>
                     
-
-                </Modal>
+                    <Button
+                        onPress={() => {
+                            this.toggleModal();
+                        }}
+                        color='#5637DD'
+                        title='Close'
+                    />
+                </View>
                 
+
+            </Modal> 
+   
             </View>
         );
     }

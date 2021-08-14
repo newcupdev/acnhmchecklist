@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Tile } from 'react-native-elements';
+import { baseUrl } from '../shared/baseUrl';
 
 class Contact extends Component {
 
@@ -11,6 +12,10 @@ class Contact extends Component {
     render() {
         return (
             <ScrollView>
+                <Tile
+                    imageSrc={{uri: baseUrl + 'images/isabelle_contact.png'}}
+                    featured
+                />
                 <Card
                     title="Contact Information"
                     wrapperStyle={{margin: 20}}>

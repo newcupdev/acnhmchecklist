@@ -40,11 +40,11 @@ const HomeNavigator = createStackNavigator(
     {
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -58,11 +58,11 @@ const DonationsNavigator = createStackNavigator(
         initialRouteName: 'Donations',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -95,11 +95,11 @@ const BugsDirectoryNavigator = createStackNavigator(
         initialRouteName: 'BugsDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -114,11 +114,11 @@ const FishesDirectoryNavigator = createStackNavigator(
         initialRouteName: 'FishesDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -133,11 +133,11 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
         initialRouteName: 'SeacreaturesDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -152,11 +152,11 @@ const ArtsDirectoryNavigator = createStackNavigator(
         initialRouteName: 'ArtsDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -171,11 +171,11 @@ const FossilsDirectoryNavigator = createStackNavigator(
         initialRouteName: 'FossilsDirectory',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -209,11 +209,11 @@ const AboutNavigator = createStackNavigator(
         initialRouteName: 'About',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -227,11 +227,11 @@ const ContactNavigator = createStackNavigator(
         initialRouteName: 'Contact',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -245,11 +245,11 @@ const SaveDateNavigator = createStackNavigator(
         initialRouteName: 'SaveDate',
         defaultNavigationOptions: {
             headerStyle: {
-                backgroundColor: '#5637DD'
+                backgroundColor: '#F4A460'
             },
-            headerTintColor: '#fff',
+            headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#fff'
+                color: '#000'
             }
         }
     }
@@ -265,8 +265,8 @@ const CustomDrawerContentComponent = props => (
                     <Image source={{uri: baseUrl + 'images/blathers_icon.png'}} style={styles.drawerImage} />
                 </View>
                 <View style={{flex: 2}}>
-                    <Text style={{fontWeight: "bold", color: "#fff"}}>Animal Crossing:</Text>
-                    <Text style={{fontStyle: "italic", color: "#fff", marginLeft: 50}}>New Horizon</Text>
+                    <Text style={{fontWeight: "bold", color: "#000"}}>Animal Crossing:</Text>
+                    <Text style={{fontStyle: "italic", color: "#000", marginLeft: 50}}>New Horizon</Text>
                     <Text style={styles.drawerHeaderText}>Museum Tracker</Text>
                 </View>
             </View>
@@ -291,7 +291,7 @@ const MainNavigator = createDrawerNavigator(
         SaveDate: {screen: SaveDateNavigator}
     },
     {
-        drawerBackgroundColor: '#CEC8FF',
+        drawerBackgroundColor: '#FFDAB9',
         contentComponent: CustomDrawerContentComponent
     }
 );
@@ -327,7 +327,7 @@ const styles = StyleSheet.create({
         flex: 1,
     },
     drawerHeader: {
-        backgroundColor: '#5637DD',
+        backgroundColor: '#F4A460',
         height: 140,
         alignItems: 'center',
         justifyContent: 'center',
@@ -335,7 +335,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     drawerHeaderText: {
-        color: '#fff',
+        color: '#000',
         fontSize: 22,
         fontWeight: 'bold'
     },

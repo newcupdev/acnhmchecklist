@@ -17,7 +17,7 @@ function RenderBug({bug}) {
     if (bug) {
         return (
             <View>
-                <ScrollView>
+                <ScrollView style={{backgroundColor: '#FFDAB9'}}>
                     <Tile
                         imageSrc={{uri: bug.image}}
                     />

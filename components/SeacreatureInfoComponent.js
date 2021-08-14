@@ -17,7 +17,7 @@ function RenderSeacreature({seacreature}) {
     if (seacreature) {
         return (
             <View>
-                <ScrollView>
+                <ScrollView style={{backgroundColor: '#FFDAB9'}}>
                     <Tile
                         imageSrc={{uri: seacreature.image}}
                     />

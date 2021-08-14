@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { Card } from 'react-native-elements';
+import { baseUrl } from '../shared/baseUrl';
 
 class Donations extends Component {
 
@@ -10,42 +11,42 @@ class Donations extends Component {
 
     render() {
         return(
-            <ScrollView>
-               <Card 
+            <ScrollView style={{backgroundColor: '#FFDAB9'}}>
+               <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'BUGS'
-                    image={require('./images/react-lake.jpg')}
+                    image={{uri: baseUrl + 'images/bug_bg.jpg'}}
                 >
                     <Text style={{margin: 10}}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 
-                <Card 
+                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'FISH'
-                    image={require('./images/react-lake.jpg')}
+                    image={{uri: baseUrl + 'images/fishing_cj.png'}}
                 >
                     <Text style={{margin: 10}}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 
-                <Card 
+                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'SEA CREATURES'
-                    image={require('./images/react-lake.jpg')}
+                    image={{uri: baseUrl + 'images/sea_creatures.jpg'}}
                 >
                     <Text style={{margin: 10}}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 
-                <Card 
+                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'ARTS'
-                    image={require('./images/react-lake.jpg')}
+                    image={{uri: baseUrl + 'images/acnh_art.jpg'}}
                 >
                     <Text style={{margin: 10}}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 
-                <Card 
+                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'FOSSILS'
-                    image={require('./images/react-lake.jpg')}
+                    image={{uri: baseUrl + 'images/acnh_dino.png'}}
                 >
                     <Text style={{margin: 10}}>
                         Percentage completion: 50%
