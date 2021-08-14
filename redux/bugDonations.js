@@ -9,7 +9,7 @@ export const bugDonations = (state = [], action) => {
             return state.concat(action.payload);
 
             case ActionTypes.DELETE_BUG_DONATION:
-                return state.filter(bugDonation => butDonation !== action.payload);
+                return state.filter(bugDonation => bugDonation !== action.payload);
 
         default:
             return state;
