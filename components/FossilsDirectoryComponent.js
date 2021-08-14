@@ -25,7 +25,7 @@ class FossilsDirectory extends Component {
                     title={item.name}
                     //subtitle={item.catchphrase}
                     //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                    //onPress={() => navigate('BugInfo', { bugId: item.id })}
+                    onPress={() => navigate('FossilInfo', { fossilId: item.id })}
                     leftAvatar={{ source: {uri: baseUrl + 'images/fossil_icon.png'}}}
                 />
             );

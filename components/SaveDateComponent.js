@@ -1,38 +1,50 @@
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
-import { Card } from 'react-native-elements';
-
-
-
-
-function SaveIt() {
-    return(
-        <Card
-            title="Our Mission">
-            <Text style={{margin: 10}}>
-            reference to reservation component from the nucampsite project
-            </Text>
-        </Card>
-    );
-}
-
+import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import { Tile } from 'react-native-elements';
+import { baseUrl } from '../shared/baseUrl';
 
 class SaveDate extends Component {
 
     static navigationOptions = {
-        title: 'Save the date! '
+        title: 'Save the date!'
     }
 
     render() {
-
         return (
-            <ScrollView>
+            <ScrollView style={{backgroundColor: '#F4A460'}}>
+                <Tile
+                    imageSrc={{uri: baseUrl + 'images/bugoff.jpg'}}
+                    featured
+                />
+                <View style={styles.container}>
                 
-                <SaveIt />
-                
+                    <Text 
+                        onPress={()=>console.log("use a modal to show a form")}
+                        style={{fontSize: 15, fontWeight: "bold"}}>
+                            CLICK TO SAVE THE DATE!
+
+                    </Text>
+                </View>
+                <Tile
+                    imageSrc={{uri: baseUrl + 'images/fishtourney.png'}}
+                    featured
+                />
             </ScrollView>
         );
     }
 }
 
-export default SaveDate;
+const styles = StyleSheet.create({
+    container: {
+        justifyContent: 'center',
+        margin: 10,
+        alignItems: 'center',
+        
+    },
+    textLabel: {
+        fontWeight: "bold",
+        fontSize: 17
+    }
+});
+
+export default SaveDate

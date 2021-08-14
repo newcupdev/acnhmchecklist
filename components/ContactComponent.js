@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
-import { Card, Tile } from 'react-native-elements';
+import { Card, Tile, Button, Icon } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
+import * as MailComposer from 'expo-mail-composer';
 
 class Contact extends Component {
 
@@ -17,14 +18,26 @@ class Contact extends Component {
                     featured
                 />
                 <Card
-                    title="Contact Information"
+                    title="Do you have any feedback?"
                     wrapperStyle={{margin: 20}}>
 
-                <Text>1 Nucamp Way</Text>
-                <Text>Seattle, WA 98001</Text>
-                <Text style={{marginBottom: 10}}>U.S.A.</Text>
-                <Text>Phone: 1-206-555-1234</Text>
-                <Text>Email: campsites@nucamp.co</Text>
+                <Text>Please click the email icon below to email us for any issues like: {'\n'}</Text>
+                <Text>{'\t'}Misinformation</Text>
+                <Text>{'\t'}Application error</Text>
+                <Text>{'\t'}Server issues</Text>
+
+                
+                <Button
+                        title="Send Email"
+                        buttonStyle={{backgroundColor: '#F4A460', margin: 40}}
+                        icon={<Icon
+                            name='envelope-o'
+                            type='font-awesome'
+                            color='#fff'
+                            iconStyle={{marginRight: 10}}
+                        />}
+                        onPress={() => this.sendMail()}
+                    />
 
                 </Card>
 

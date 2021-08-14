@@ -38,8 +38,7 @@ class ArtsDirectory extends Component {
 
     render () {
         const { navigate } = this.props.navigation;
-        const artId = this.props.navigation.getParam('artId');
-        const art = this.props.arts.arts.filter(art => art.id === artId)[0];
+       
         const renderArtDirectoryItem = ({item}) => {
             return (
                 <View>
@@ -48,10 +47,10 @@ class ArtsDirectory extends Component {
                             title={item.name}
                             //subtitle={item.catchphrase}
                             //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                            //onPress={() => navigate('BugInfo', { bugId: item.id })}
+                            onPress={() => navigate('ArtInfo', { artId: item.id })}
                             
                             leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
-                            onPress={() => this.showArt(item.name)}
+                            //onPress={() => this.showArt(item.name)}
                         />
                     </View>
                 </View>
