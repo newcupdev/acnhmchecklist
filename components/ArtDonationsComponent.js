@@ -42,7 +42,7 @@ class ArtDonations extends Component {
                         <ListItem
                             title={item.name}
                             subtitle={item.description}
-                            leftAvatar={{source: {uri: item.icon}}}
+                            leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
                     
                         />
                     </View>

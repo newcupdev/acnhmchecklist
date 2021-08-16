@@ -53,10 +53,7 @@ function RenderArt(props) {
                         <Text style={styles.textLabel}>Blather's art description: </Text>
                         <Text>{'\t'}{art.museumphrase}</Text>
 
-
-                    </Card>
-
-                    <View style={{alignItems: 'center'}}>
+                        <View style={{alignItems: 'center'}}>
                             <Icon
                                 name={props.artDonation ? 'check-circle-o' : 'circle-o'}
                                 type='font-awesome'
@@ -68,6 +65,11 @@ function RenderArt(props) {
                                     console.log('Already set as a favorite') : props.markArtDonation()}
                             />
                         </View>
+
+
+                    </Card>
+
+                    
                 </ScrollView>
             
         );

@@ -9,7 +9,7 @@ import { fossils } from './fossils';
 import { bugDonations } from './bugDonations';
 import { fishDonations } from './fishDonations';
 import { seacreatureDonations } from './seacreatureDonations';
-import { artDonations } from './bugDonations';
+import { artDonations } from './artDonations';
 
 
 export const ConfigureStore = () => {
