@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { Card } from 'react-native-elements';
+import { connect } from 'react-redux';
 import { baseUrl } from '../shared/baseUrl';
+
+const mapStateToProps = state => {
+    return {
+        fishes: state.fishes,
+        fishDonations: state.fishDonations
+    };
+};
+
+
 
 class Donations extends Component {
 
@@ -11,6 +21,12 @@ class Donations extends Component {
 
     render() {
         const { navigate } = this.props.navigation;
+
+        // let counter = this.props.fishes.fishes.filter(
+        //     fish => this.props.fishDonations.includes(fish.id)
+        // )
+        // console.log(counter)
+
         return(
             <ScrollView style={{backgroundColor: '#FFDAB9'}}>
                <Card containerStyle={{backgroundColor: '#FFE4B5'}}
@@ -19,14 +35,14 @@ class Donations extends Component {
                     
                 >
                     <Text style={{margin: 10}} onPress={() => navigate('BugDonations', null)}>
-                        Percentage completion: 50%
+                        Percentage completion: 50% 
                     </Text>
                 </Card> 
                 <Card containerStyle={{backgroundColor: '#FFE4B5'}}
                     featuredTitle= 'FISH'
                     image={{uri: baseUrl + 'images/fishing_cj.png'}}
                 >
-                    <Text style={{margin: 10}}>
+                    <Text style={{margin: 10}} onPress={() => navigate('FishDonations', null)}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 
@@ -56,8 +72,12 @@ class Donations extends Component {
                 </Card> 
             </ScrollView>
         );
+
+        
     }
     
 }
 
 export default Donations;
+
+//export default connect(mapStateToProps)(Donations);

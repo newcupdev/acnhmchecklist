@@ -28,6 +28,7 @@ class FishDonations extends Component {
     render() {
         
         const renderFishDonationItem = ({item}) => {
+            
             return (
                 <SwipeRow rightOpenValue={-100} style={styles.swipeRow}>
                     <View style={styles.deleteView}>
@@ -60,15 +61,23 @@ class FishDonations extends Component {
                 </View>
             );
         }
+
+        let counter = this.props.fishes.fishes.filter(
+            fish => this.props.fishDonations.includes(fish.id)
+        )
+        console.log(counter.length);
         return (
-            <FlatList
-                data={this.props.fishes.fishes.filter(
-                    fish => this.props.fishDonations.includes(fish.id)
-                )}
-                renderItem={renderFishDonationItem}
-                keyExtractor={item => item.id.toString()}
-                
-            />
+            <View>
+                <View><Text>{counter.length}</Text></View>
+                <FlatList
+                    data={this.props.fishes.fishes.filter(
+                        fish => this.props.fishDonations.includes(fish.id)
+                    )}
+                    renderItem={renderFishDonationItem}
+                    keyExtractor={item => item.id.toString()}
+                    
+                />
+            </View>
             
         );
     }
