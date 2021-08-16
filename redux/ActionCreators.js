@@ -203,6 +203,22 @@ export const deleteBugDonation = bugId => ({
     payload: bugId
 }); 
 
+export const postFishDonation = fishId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFishDonation(fishId));
+    }, 1000);
+};
+
+export const addFishDonation = fishId => ({
+    type: ActionTypes.ADD_FISH_DONATION,
+    payload: fishId
+});
+
+export const deleteFishDonation = fishId => ({
+    type: ActionTypes.DELETE_FISH_DONATION,
+    payload: fishId
+}); 
+
 
 
 
