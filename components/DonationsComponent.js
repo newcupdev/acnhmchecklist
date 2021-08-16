@@ -50,7 +50,7 @@ class Donations extends Component {
                     featuredTitle= 'SEA CREATURES'
                     image={{uri: baseUrl + 'images/sea_creatures.jpg'}}
                 >
-                    <Text style={{margin: 10}}>
+                    <Text style={{margin: 10}} onPress={() => navigate('SCDonations', null)}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 

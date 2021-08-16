@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
-import { Card, Tile } from 'react-native-elements';
+import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postSeaCreatureDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
