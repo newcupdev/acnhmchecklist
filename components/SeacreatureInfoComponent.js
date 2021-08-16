@@ -2,17 +2,25 @@ import React, { Component } from 'react';
 import { Text, View, StyleSheet, ScrollView } from 'react-native';
 import { Card, Tile } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { postSeaCreatureDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
-        seacreatures: state.seacreatures
+        seacreatures: state.seacreatures,
+        seacreatureDonations: state.seacreatureDonations
     };
+};
+
+const mapDispatchToProps = {
+    postSeaCreatureDonation: seacreatureId => (postSeaCreatureDonation(seacreatureId))
 };
 
 
 
-function RenderSeacreature({seacreature}) {
+function RenderSeacreature(props) {
+
+    const {seacreature} = props;
 
     if (seacreature) {
         return (
@@ -42,6 +50,19 @@ function RenderSeacreature({seacreature}) {
                         <Text style={styles.textLabel}>Blather's catchphrase: </Text>
                         <Text>{'\t'}{seacreature.museumphrase}</Text>
 
+                        <View style={{alignItems: 'center'}}>
+                            <Icon
+                                name={props.seacreatureDonation ? 'check-circle-o' : 'circle-o'}
+                                type='font-awesome'
+                                color='#2E8B57'
+                                raised
+                                reverse
+                                size = {30}
+                                onPress={() => props.seacreatureDonation ? 
+                                    console.log('Already set as a favorite') : props.markSeaCreatureDonation()}
+                            />
+                        </View>
+
                         
 
                     </Card>
@@ -54,6 +75,11 @@ function RenderSeacreature({seacreature}) {
 
 class SeacreatureInfo extends Component {
 
+    markSeaCreatureDonation(seacreatureId) {
+        this.props.postSeaCreatureDonation(seacreatureId);
+    }
+
+
     static navigationOptions = {
         title: 'Sea Creature Information'
     }
@@ -61,7 +87,11 @@ class SeacreatureInfo extends Component {
     render() {
         const seacreatureId = this.props.navigation.getParam('seacreatureId');
         const seacreature = this.props.seacreatures.seacreatures.filter(seacreature => seacreature.id === seacreatureId)[0];
-        return <RenderSeacreature seacreature={seacreature} />;
+        return <RenderSeacreature 
+                seacreature={seacreature} 
+                seacreatureDonation = {this.props.seacreatureDonations.includes(seacreatureId)}
+                markSeaCreatureDonation = {()=>this.markSeaCreatureDonation(seacreatureId)}
+                />;
     }
 }
 
@@ -71,4 +101,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps)(SeacreatureInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(SeacreatureInfo);

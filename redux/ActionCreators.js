@@ -219,6 +219,21 @@ export const deleteFishDonation = fishId => ({
     payload: fishId
 }); 
 
+export const postSeaCreatureDonation = seacreatureId => dispatch => {
+    setTimeout(() => {
+        dispatch(addSeaCreatureDonation(seacreatureId));
+    }, 1000);
+};
+
+export const addSeaCreatureDonation = seacreatureId => ({
+    type: ActionTypes.ADD_SEACREATURE_DONATION,
+    payload: seacreatureId
+});
+
+export const deleteSeaCreatureDonation = seacreatureId => ({
+    type: ActionTypes.DELETE_SEACREATURE_DONATION,
+    payload: seacreatureId
+}); 
 
 
 

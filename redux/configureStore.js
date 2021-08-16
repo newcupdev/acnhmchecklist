@@ -8,6 +8,7 @@ import { arts } from './arts';
 import { fossils } from './fossils';
 import { bugDonations } from './bugDonations';
 import { fishDonations } from './fishDonations';
+import { seacreatureDonations } from './seacreatureDonations';
 
 
 export const ConfigureStore = () => {
@@ -19,7 +20,8 @@ export const ConfigureStore = () => {
             arts,
             fossils,
             bugDonations,
-            fishDonations
+            fishDonations,
+            seacreatureDonations
         }),
         applyMiddleware(thunk, logger)
     );
