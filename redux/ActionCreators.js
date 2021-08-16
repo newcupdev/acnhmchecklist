@@ -235,6 +235,22 @@ export const deleteSeaCreatureDonation = seacreatureId => ({
     payload: seacreatureId
 }); 
 
+export const postArtDonation = artId => dispatch => {
+    setTimeout(() => {
+        dispatch(addArtDonation(artId));
+    }, 1000);
+};
+
+export const addArtDonation = artId => ({
+    type: ActionTypes.ADD_ART_DONATION,
+    payload: artId
+});
+
+export const deleteArtDonation = artId => ({
+    type: ActionTypes.DELETE_ART_DONATION,
+    payload: artId
+}); 
+
 
 
 

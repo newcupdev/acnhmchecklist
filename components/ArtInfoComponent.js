@@ -1,18 +1,26 @@
 import React, { Component } from 'react';
 import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
-import { Card } from 'react-native-elements';
+import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
+import { postArtDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
     return {
-        arts: state.arts
+        arts: state.arts,
+        artDonations: state.artDonations
     };
+};
+
+const mapDispatchToProps = {
+    postArtDonation: artId => (postArtDonation(artId))
 };
 
 
 
-function RenderArt({art}) {
+function RenderArt(props) {
+
+    const {art} = props;
 
     if (art) {
         return (
@@ -47,6 +55,19 @@ function RenderArt({art}) {
 
 
                     </Card>
+
+                    <View style={{alignItems: 'center'}}>
+                            <Icon
+                                name={props.artDonation ? 'check-circle-o' : 'circle-o'}
+                                type='font-awesome'
+                                color='#2E8B57'
+                                raised
+                                reverse
+                                size = {30}
+                                onPress={() => props.artDonation ? 
+                                    console.log('Already set as a favorite') : props.markArtDonation()}
+                            />
+                        </View>
                 </ScrollView>
             
         );
@@ -56,6 +77,10 @@ function RenderArt({art}) {
 
 class ArtInfo extends Component {
 
+    markArtDonation(artId) {
+        this.props.postArtDonation(artId);
+    }
+
     static navigationOptions = {
         title: 'Art Information'
     }
@@ -63,7 +88,11 @@ class ArtInfo extends Component {
     render() {
         const artId = this.props.navigation.getParam('artId');
         const art = this.props.arts.arts.filter(art => art.id === artId)[0];
-        return <RenderArt art={art} />;
+        return <RenderArt 
+            art={art} 
+            artDonation = {this.props.artDonations.includes(artId)}
+            markArtDonation = {()=>this.markArtDonation(artId)}
+            />;
     }
 }
 
@@ -85,4 +114,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default connect(mapStateToProps)(ArtInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(ArtInfo);
