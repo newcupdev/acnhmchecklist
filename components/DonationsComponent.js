@@ -66,7 +66,7 @@ class Donations extends Component {
                     featuredTitle= 'FOSSILS'
                     image={{uri: baseUrl + 'images/acnh_dino.png'}}
                 >
-                    <Text style={{margin: 10}}>
+                    <Text style={{margin: 10}} onPress={() => navigate('FossilDonations', null)}>
                         Percentage completion: 50%
                     </Text>
                 </Card> 

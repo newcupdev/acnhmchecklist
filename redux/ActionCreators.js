@@ -251,6 +251,22 @@ export const deleteArtDonation = artId => ({
     payload: artId
 }); 
 
+export const postFossilDonation = fossilId => dispatch => {
+    setTimeout(() => {
+        dispatch(addFossilDonation(fossilId));
+    }, 1000);
+};
+
+export const addFossilDonation = fossilId => ({
+    type: ActionTypes.ADD_FOSSIL_DONATION,
+    payload: fossilId
+});
+
+export const deleteFossilDonation = fossilId => ({
+    type: ActionTypes.DELETE_FOSSIL_DONATION,
+    payload: fossilId
+}); 
+
 
 
 

@@ -10,6 +10,7 @@ import { bugDonations } from './bugDonations';
 import { fishDonations } from './fishDonations';
 import { seacreatureDonations } from './seacreatureDonations';
 import { artDonations } from './artDonations';
+import { fossilDonations } from './fossilDonations';
 
 
 export const ConfigureStore = () => {
@@ -23,7 +24,8 @@ export const ConfigureStore = () => {
             bugDonations,
             fishDonations,
             seacreatureDonations,
-            artDonations
+            artDonations,
+            fossilDonations
         }),
         applyMiddleware(thunk, logger)
     );

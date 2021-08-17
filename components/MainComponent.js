@@ -17,6 +17,7 @@ import BugDonations from './BugDonationsComponent';
 import FishDonations from './FishDonationsComponent';
 import SCDonations from './SCDonationsComponent';
 import ArtDonations from './ArtDonationsComponent';
+import FossilDonations from './FossilDonationsComponent';
 import About from './AboutComponent';
 import Contact from './ContactComponent';
 import SaveDate from './SaveDateComponent';
@@ -64,6 +65,7 @@ const DonationsNavigator = createStackNavigator(
         BugDonations: { screen: BugDonations },
         SCDonations: { screen: SCDonations },
         ArtDonations: { screen: ArtDonations },
+        FossilDonations: { screen: FossilDonations }
         
     }, 
     {
