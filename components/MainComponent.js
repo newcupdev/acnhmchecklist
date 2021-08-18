@@ -46,15 +46,21 @@ const HomeNavigator = createStackNavigator(
         Home: { screen: Home }
     },
     {
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#F4A460'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
-            }
-        }
+            },
+            headerLeft: <Icon
+                name='home'
+                type='font-awesome'
+                iconStyle={styles.stackIcon}
+                onPress={() => navigation.toggleDrawer()}
+            />
+        })
     }
 );
 
@@ -528,7 +534,7 @@ const styles = StyleSheet.create({
     },
     stackIcon: {
         marginLeft: 10,
-        color: '#fff',
+        color: '#000',
         fontSize: 24
     }
 });
