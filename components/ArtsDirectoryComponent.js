@@ -28,7 +28,7 @@ class ArtsDirectory extends Component {
 
     showArt(artId){
         console.log(artId);
-        console.log(this.props.arts);
+        //console.log(this.props.arts);
         this.toggleModal();
     }
 
