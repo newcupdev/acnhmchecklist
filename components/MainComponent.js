@@ -66,7 +66,17 @@ const HomeNavigator = createStackNavigator(
 
 const DonationsNavigator = createStackNavigator(
     {
-        Donations: { screen: Donations },
+        Donations: { 
+            screen: Donations,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='box-open'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+        },
         FishDonations: { screen: FishDonations },
         BugDonations: { screen: BugDonations },
         SCDonations: { screen: SCDonations },
@@ -127,7 +137,17 @@ const DonationsNavigator = createStackNavigator(
 
 const BugsDirectoryNavigator = createStackNavigator(
     {
-        BugsDirectory: { screen: BugsDirectory },
+        BugsDirectory: { 
+            screen: BugsDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='spider'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+        },
         BugInfo: {screen: BugInfo}
     }, 
     {
@@ -146,7 +166,17 @@ const BugsDirectoryNavigator = createStackNavigator(
 
 const FishesDirectoryNavigator = createStackNavigator(
     {
-        FishesDirectory: { screen: FishesDirectory },
+        FishesDirectory: { 
+            screen: FishesDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='fish'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+        },
         FishInfo: {screen: FishInfo}
     }, 
     {
@@ -165,7 +195,17 @@ const FishesDirectoryNavigator = createStackNavigator(
 
 const SeacreaturesDirectoryNavigator = createStackNavigator(
     {
-        SeacreaturesDirectory: { screen: SeacreaturesDirectory },
+        SeacreaturesDirectory: { 
+            screen: SeacreaturesDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='swimmer'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+        },
         SeacreatureInfo: {screen: SeacreatureInfo}
     }, 
     {
@@ -184,7 +224,17 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
 
 const ArtsDirectoryNavigator = createStackNavigator(
     {
-        ArtsDirectory: { screen: ArtsDirectory },
+        ArtsDirectory: { 
+            screen: ArtsDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='broom'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+         },
         ArtInfo: {screen: ArtInfo}
         
     }, 
@@ -204,7 +254,17 @@ const ArtsDirectoryNavigator = createStackNavigator(
 
 const FossilsDirectoryNavigator = createStackNavigator(
     {
-        FossilsDirectory: { screen: FossilsDirectory },
+        FossilsDirectory: { 
+            screen: FossilsDirectory,
+            navigationOptions: ({navigation}) => ({
+                headerLeft: <Icon
+                    name='bone'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+            })
+        },
         FossilInfo: {screen: FossilInfo}
         
     }, 
@@ -247,16 +307,21 @@ const AboutNavigator = createStackNavigator(
         About: { screen: About }
     }, 
     {
-        initialRouteName: 'About',
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#F4A460'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
-            }
-        }
+            },
+            headerLeft: <Icon
+                    name='info-circle'
+                    type='font-awesome'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+        })
     }
 );
 
@@ -265,16 +330,21 @@ const ContactNavigator = createStackNavigator(
         Contact: { screen: Contact }
     }, 
     {
-        initialRouteName: 'Contact',
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#F4A460'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
-            }
-        }
+            },
+            headerLeft: <Icon
+                    name='address-card'
+                    type='font-awesome'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+        })
     }
 );
 
@@ -283,16 +353,21 @@ const SaveDateNavigator = createStackNavigator(
         SaveDate: { screen: SaveDate }
     }, 
     {
-        initialRouteName: 'SaveDate',
-        defaultNavigationOptions: {
+        defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#F4A460'
             },
             headerTintColor: '#000',
             headerTitleStyle: {
                 color: '#000'
-            }
-        }
+            },
+            headerLeft: <Icon
+                    name='calendar-alt'
+                    type='font-awesome-5'
+                    iconStyle={styles.stackIcon}
+                    onPress={() => navigation.toggleDrawer()}
+                    />
+        })
     }
 );
 
