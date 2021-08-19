@@ -6,6 +6,7 @@ import { Loading } from './LoadingComponent';
 import { SwipeRow } from 'react-native-swipe-list-view';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { deleteFishDonation } from '../redux/ActionCreators';
+import * as Progress from 'react-native-progress';
 import { baseUrl } from '../shared/baseUrl';
 
 const mapStateToProps = state => {
@@ -65,10 +66,15 @@ class FishDonations extends Component {
         let counter = this.props.fishes.fishes.filter(
             fish => this.props.fishDonations.includes(fish.id)
         )
-        console.log(counter.length);
+        console.log(counter.length / 80);
+        let progress = parseFloat((counter.length / 80).toFixed(2));
+        console.log(progress);
         return (
             <View>
-                <View><Text>{counter.length}</Text></View>
+                <View style={{margin: 10}}>
+                    <Text >{counter.length} / 80</Text>
+                    <Progress.Bar progress={progress} width = {null} height={20} animated />
+                </View>
                 <FlatList
                     data={this.props.fishes.fishes.filter(
                         fish => this.props.fishDonations.includes(fish.id)

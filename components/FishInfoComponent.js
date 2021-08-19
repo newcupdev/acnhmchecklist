@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
 import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postFishDonation } from '../redux/ActionCreators';
@@ -24,9 +24,12 @@ function RenderFish(props) {
         return (
             <View>
                 <ScrollView style={{backgroundColor: '#FFDAB9'}}>
-                    <Tile
-                        imageSrc={{uri: fish.image}}
-                    />
+                    <View>
+                        <Tile
+                            imageSrc={{uri: fish.image}}
+                        />
+                    
+                    </View>
 
                     <Card
                         title= {fish.name}
