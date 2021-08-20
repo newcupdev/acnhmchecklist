@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { FlatList, View, Text, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet, Modal, Button } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
@@ -21,6 +21,21 @@ const mapDispatchToProps = {
 };
 
 class FishDonations extends Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            showModal: false
+        };
+    }
+
+    toggleModal() {
+        console.log('modal was clicked');
+        this.setState({showModal: !this.state.showModal});
+    }
+
+    
 
     static navigationOptions = {
         title: 'My Fish Donations'
@@ -69,11 +84,15 @@ class FishDonations extends Component {
         console.log(counter.length / 80);
         let progress = parseFloat((counter.length / 80).toFixed(2));
         console.log(progress);
+        
+        
+        
+
         return (
             <View>
-                <View style={{margin: 10}}>
-                    <Text >{counter.length} / 80</Text>
-                    <Progress.Bar progress={progress} width = {null} height={20} animated />
+                <View style={{margin: 10}} >
+                    <Text onPress={() => this.toggleModal()}>Click here to view your stat!</Text>
+                    <Progress.Bar progress={progress} width = {null} height={20} animated  />
                 </View>
                 <FlatList
                     data={this.props.fishes.fishes.filter(
@@ -83,6 +102,38 @@ class FishDonations extends Component {
                     keyExtractor={item => item.id.toString()}
                     
                 />
+                <Modal
+                    animationType={'slide'}
+                    transparent={false}
+                    visible={this.state.showModal}
+                    onRequestClose={() => this.toggleModal()}
+                >
+                    <View style={styles.modal}>
+                        <Text>Percentage progress</Text>
+                        <Progress.Circle 
+                            size={300} 
+                            thickness={30} 
+                            progress={progress} 
+                            animate 
+                            showsText 
+                            formatText={() => {
+                                let progressText = (progress * 100).toString();
+                                return `${progressText}%`;
+                            }}
+                            />
+                        <Text>Total number of bugs: 80</Text>
+                        <Text>You have caught {counter.length} out of 80.</Text>
+                        <Button
+                            onPress={() => {
+                                this.toggleModal();
+                                
+                            }}
+                            color='#5637DD'
+                            title='Close'
+                        />
+                    </View>
+
+                </Modal>
             </View>
             
         );
@@ -107,6 +158,22 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         fontSize: 16,
         width: 100
+    },
+    modal: { 
+        justifyContent: 'center',
+        margin: 20
+    },
+    modalTitle: {
+        fontSize: 24,
+        fontWeight: 'bold',
+        backgroundColor: '#5637DD',
+        textAlign: 'center',
+        color: '#fff',
+        marginBottom: 20
+    },
+    modalText: {
+        fontSize: 18,
+        margin: 10
     }
 });
 
