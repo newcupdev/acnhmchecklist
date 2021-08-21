@@ -53,7 +53,9 @@ const HomeNavigator = createStackNavigator(
             },
             headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#000'
+                color: '#000',
+                fontFamily: "Fink-Heavy",
+                fontSize: 25
             },
             headerLeft: <Icon
                 name='home'
@@ -85,7 +87,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         },
         FishDonations: { 
@@ -95,7 +102,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         },
         BugDonations: { 
@@ -105,7 +117,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         },
         SCDonations: { 
@@ -115,7 +132,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         },
         ArtDonations: { 
@@ -125,7 +147,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         },
         FossilDonations: { 
@@ -135,7 +162,12 @@ const DonationsNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         }
         
@@ -206,7 +238,12 @@ const BugsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                />
+                />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         },
         BugInfo: {
@@ -216,7 +253,12 @@ const BugsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         }
     }, 
@@ -249,7 +291,12 @@ const FishesDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                />
+                />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         },
         FishInfo: {
@@ -259,7 +306,12 @@ const FishesDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         }
     }, 
@@ -292,7 +344,12 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                />
+                />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         },
         SeacreatureInfo: {
@@ -302,7 +359,12 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         }
     }, 
@@ -335,7 +397,12 @@ const ArtsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                />
+                />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
          },
         ArtInfo: {
@@ -345,7 +412,12 @@ const ArtsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         }
         
@@ -379,7 +451,12 @@ const FossilsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                />
+                />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                },
             })
         },
         FossilInfo: {
@@ -389,7 +466,12 @@ const FossilsDirectoryNavigator = createStackNavigator(
                     source={{uri: baseUrl + 'images/acnh_bg2.png'}}
                     resizeMode="cover"
                     style={styles.image}
-                    />
+                    />,
+                headerTitleStyle: {
+                    color: '#000',
+                    fontFamily: "Fink-Heavy",
+                    fontSize: 25
+                }
             })
         }
         
@@ -439,7 +521,9 @@ const AboutNavigator = createStackNavigator(
             },
             headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#000'
+                color: '#000',
+                fontFamily: "Fink-Heavy",
+                fontSize: 25
             },
             headerLeft: <Icon
                     name='info-circle'
@@ -467,7 +551,9 @@ const ContactNavigator = createStackNavigator(
             },
             headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#000'
+                color: '#000',
+                fontFamily: "Fink-Heavy",
+                fontSize: 25
             },
             headerLeft: <Icon
                     name='address-card'
@@ -496,7 +582,9 @@ const SaveDateNavigator = createStackNavigator(
             },
             headerTintColor: '#000',
             headerTitleStyle: {
-                color: '#000'
+                color: '#000',
+                fontFamily: "Fink-Heavy",
+                fontSize: 25
             },
             headerLeft: <Icon
                     name='calendar-alt'
@@ -528,12 +616,19 @@ const CustomDrawerContentComponent = props => (
                         <Image source={{uri: baseUrl + 'images/blathers_icon.png'}} style={styles.drawerImage} />
                     </View>
                     <View style={{flex: 2}}>
-                        <Text style={{fontWeight: "bold", color: "#000"}}>Animal Crossing:</Text>
+                        
+                        <Text style={{color: "#000", fontFamily: "Fink-Heavy", fontSize: 18}}>Animal Crossing:</Text>
+                       
+                        
                         <Text style={{fontStyle: "italic", color: "#000", marginLeft: 50}}>New Horizon</Text>
                         <Text style={styles.drawerHeaderText}>Museum Tracker</Text>
                     </View>
                 </View>
-                <DrawerItems {...props} />
+                <DrawerItems {...props} 
+                    labelStyle={{fontFamily: "Fink-Heavy", fontWeight: "normal", fontSize: 18}}
+                    activeTintColor="#fff"
+                    activeBackgroundColor="rgba(0,0,0,.65)"
+                />
             </SafeAreaView>
         </ScrollView>
     </ImageBackground>

@@ -43,8 +43,9 @@ const styles = StyleSheet.create({
         
     },
     textLabel: {
-        fontWeight: "bold",
-        fontSize: 17
+        // fontWeight: "bold",
+        fontSize: 17,
+        fontFamily: "Fink-Heavy"
     },
     image: {
         flex: 1,
