@@ -10,6 +10,14 @@ class Contact extends Component {
         title: 'Contact Us'
     }
 
+    sendMail() {
+        MailComposer.composeAsync({
+            recipients: ['museum@acnhtracker.co'],
+            subject: 'Inquiry',
+            body: 'To whom it may concern:'
+        })
+    }
+
     render() {
         return (
             <ScrollView>

@@ -117,7 +117,7 @@ class FishDonations extends Component {
                             animate 
                             showsText 
                             formatText={() => {
-                                let progressText = (progress * 100).toString();
+                                let progressText = ((progress * 100).toFixed(2)).toString();
                                 return `${progressText}%`;
                             }}
                             />
