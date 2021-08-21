@@ -22,7 +22,7 @@ import About from './AboutComponent';
 import Contact from './ContactComponent';
 import SaveDate from './SaveDateComponent';
 import Constants from 'expo-constants';
-import { View, Platform, Text, StyleSheet, ScrollView, Image } from 'react-native';
+import { View, Platform, Text, StyleSheet, ScrollView, Image, ImageBackground } from 'react-native';
 import { Icon } from 'react-native-elements';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createAppContainer } from 'react-navigation';
@@ -49,6 +49,7 @@ const HomeNavigator = createStackNavigator(
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
                 backgroundColor: '#F4A460'
+
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -59,6 +60,11 @@ const HomeNavigator = createStackNavigator(
                 type='font-awesome'
                 iconStyle={styles.stackIcon}
                 onPress={() => navigation.toggleDrawer()}
+            />,
+            headerBackground: <Image 
+                source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                resizeMode="cover"
+                style={styles.image}
             />
         })
     }
@@ -74,14 +80,64 @@ const DonationsNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
                     />
             })
         },
-        FishDonations: { screen: FishDonations },
-        BugDonations: { screen: BugDonations },
-        SCDonations: { screen: SCDonations },
-        ArtDonations: { screen: ArtDonations },
-        FossilDonations: { screen: FossilDonations }
+        FishDonations: { 
+            screen: FishDonations,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        },
+        BugDonations: { 
+            screen: BugDonations,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        },
+        SCDonations: { 
+            screen: SCDonations,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        },
+        ArtDonations: { 
+            screen: ArtDonations, 
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        },
+        FossilDonations: { 
+            screen: FossilDonations, 
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
         
     }, 
     {
@@ -145,10 +201,24 @@ const BugsDirectoryNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
             })
         },
-        BugInfo: {screen: BugInfo}
+        BugInfo: {
+            screen: BugInfo,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
     }, 
     {
         initialRouteName: 'BugsDirectory',
@@ -174,10 +244,24 @@ const FishesDirectoryNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
             })
         },
-        FishInfo: {screen: FishInfo}
+        FishInfo: {
+            screen: FishInfo,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
     }, 
     {
         initialRouteName: 'FishesDirectory',
@@ -203,10 +287,24 @@ const SeacreaturesDirectoryNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
             })
         },
-        SeacreatureInfo: {screen: SeacreatureInfo}
+        SeacreatureInfo: {
+            screen: SeacreatureInfo,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
     }, 
     {
         initialRouteName: 'SeacreaturesDirectory',
@@ -232,10 +330,24 @@ const ArtsDirectoryNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
             })
          },
-        ArtInfo: {screen: ArtInfo}
+        ArtInfo: {
+            screen: ArtInfo,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
         
     }, 
     {
@@ -262,10 +374,24 @@ const FossilsDirectoryNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
             })
         },
-        FossilInfo: {screen: FossilInfo}
+        FossilInfo: {
+            screen: FossilInfo,
+            navigationOptions: () => ({
+                headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                    />
+            })
+        }
         
     }, 
     {
@@ -309,7 +435,7 @@ const AboutNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#F4A460'
+                backgroundColor: '#F4A460',
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -320,7 +446,12 @@ const AboutNavigator = createStackNavigator(
                     type='font-awesome'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+            headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
         })
     }
 );
@@ -343,7 +474,12 @@ const ContactNavigator = createStackNavigator(
                     type='font-awesome'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+            headerBackground: <Image 
+                source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                resizeMode="cover"
+                style={styles.image}
+            />
         })
     }
 );
@@ -355,7 +491,8 @@ const SaveDateNavigator = createStackNavigator(
     {
         defaultNavigationOptions: ({navigation}) => ({
             headerStyle: {
-                backgroundColor: '#F4A460'
+                backgroundColor: '#F4A460',
+                
             },
             headerTintColor: '#000',
             headerTitleStyle: {
@@ -366,29 +503,40 @@ const SaveDateNavigator = createStackNavigator(
                     type='font-awesome-5'
                     iconStyle={styles.stackIcon}
                     onPress={() => navigation.toggleDrawer()}
-                    />
+                    />,
+            headerBackground: <Image 
+                    source={{uri: baseUrl + 'images/acnh_bg2.png'}}
+                    resizeMode="cover"
+                    style={styles.image}
+                />
         })
     }
 );
 
 const CustomDrawerContentComponent = props => (
-    <ScrollView>
-        <SafeAreaView 
-            style={styles.container}
-            forceInset={{top: 'always', horizontal: 'never'}}>
-            <View style={styles.drawerHeader}>
-                <View style={{flex: 1}}>
-                    <Image source={{uri: baseUrl + 'images/blathers_icon.png'}} style={styles.drawerImage} />
+    <ImageBackground 
+                source={{uri: baseUrl + 'images/acnh_bg.jpg'}}
+                resizeMode="cover"
+                style={styles.image}
+                >
+        <ScrollView>
+            <SafeAreaView 
+                style={styles.container}
+                forceInset={{top: 'always', horizontal: 'never'}}>
+                <View style={styles.drawerHeader}>
+                    <View style={{flex: 1}}>
+                        <Image source={{uri: baseUrl + 'images/blathers_icon.png'}} style={styles.drawerImage} />
+                    </View>
+                    <View style={{flex: 2}}>
+                        <Text style={{fontWeight: "bold", color: "#000"}}>Animal Crossing:</Text>
+                        <Text style={{fontStyle: "italic", color: "#000", marginLeft: 50}}>New Horizon</Text>
+                        <Text style={styles.drawerHeaderText}>Museum Tracker</Text>
+                    </View>
                 </View>
-                <View style={{flex: 2}}>
-                    <Text style={{fontWeight: "bold", color: "#000"}}>Animal Crossing:</Text>
-                    <Text style={{fontStyle: "italic", color: "#000", marginLeft: 50}}>New Horizon</Text>
-                    <Text style={styles.drawerHeaderText}>Museum Tracker</Text>
-                </View>
-            </View>
-            <DrawerItems {...props} />
-        </SafeAreaView>
-    </ScrollView>
+                <DrawerItems {...props} />
+            </SafeAreaView>
+        </ScrollView>
+    </ImageBackground>
 );
 
 const MainNavigator = createDrawerNavigator(
@@ -584,7 +732,7 @@ class Main extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
+        flex: 1
     },
     drawerHeader: {
         backgroundColor: '#F4A460',
@@ -611,6 +759,10 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         color: '#000',
         fontSize: 24
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center"
     }
 });
 

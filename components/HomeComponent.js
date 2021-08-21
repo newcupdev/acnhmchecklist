@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import { View, ScrollView, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Tile } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -11,20 +11,26 @@ class Home extends Component {
 
     render() {
         return (
-            <ScrollView style={{backgroundColor: '#F4A460'}}>
-                <Tile
-                    imageSrc={{uri: baseUrl + 'images/animal_crossing_bg.jpeg'}}
-                    featured
-                />
-                <View style={styles.container}>
-                    <Text style={styles.textLabel}>Animal Crossing New Horizon</Text>
-                    <Text style={styles.textLabel}>Museum Tracker</Text>
-                </View>
-                <Tile
-                    imageSrc={{uri: baseUrl + 'images/acnh_museum_up.jpg'}}
-                    featured
-                />
-            </ScrollView>
+            <ImageBackground 
+                source={{uri: baseUrl + 'images/leaf_icon_bg.png'}}
+                resizeMode="cover"
+                style={styles.image}
+                >
+                <ScrollView>
+                    <Tile
+                        imageSrc={{uri: baseUrl + 'images/animal_crossing_bg.jpeg'}}
+                        featured
+                    />
+                    <View style={styles.container}>
+                        <Text style={styles.textLabel}>Animal Crossing New Horizon</Text>
+                        <Text style={styles.textLabel}>Museum Tracker</Text>
+                    </View>
+                    <Tile
+                        imageSrc={{uri: baseUrl + 'images/acnh_museum_up.jpg'}}
+                        featured
+                    />
+                </ScrollView>
+            </ImageBackground>
         );
     }
 }
@@ -39,7 +45,11 @@ const styles = StyleSheet.create({
     textLabel: {
         fontWeight: "bold",
         fontSize: 17
-    }
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center"
+      }
 });
 
 export default Home
