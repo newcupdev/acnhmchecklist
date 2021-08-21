@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { FlatList, View, Text, StyleSheet, Modal, Button } from 'react-native';
-import { ListItem } from 'react-native-elements';
+import { FlatList, View, Text, StyleSheet, Modal, ImageBackground } from 'react-native';
+import { ListItem, Icon, Button } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { Loading } from './LoadingComponent';
 import { SwipeRow } from 'react-native-swipe-list-view';
@@ -49,14 +49,44 @@ class BugDonations extends Component {
                             style={styles.deleteTouchable}
                             onPress={() => this.props.deleteBugDonation(item.id)}
                         >
-                        <Text style={styles.deleteText}>Remove</Text>
+                            {/* <Text style={styles.deleteText}>Remove</Text> */}
+                            <Icon 
+                                name='trash-alt'
+                                type='font-awesome-5'
+                                color='#B0C4DE'
+                                size={27}
+                                solid
+                            />
                         </TouchableOpacity>
                     </View>
                     <View>
                         <ListItem
                             title={item.name}
-                            subtitle={item.description}
+                            titleStyle={{
+                                fontFamily: "Fink-Heavy",
+                                fontSize: 20
+                            }}
+                            //subtitle={item.description}
                             leftAvatar={{source: {uri: item.icon}}}
+                            contentContainerStyle={{
+                                alignItems: "center",
+                                marginRight: 35
+                            }}
+                            containerStyle={{
+                                backgroundColor: "#FFE4B5",
+                                borderRadius: 20,
+                                overflow: "hidden",
+                                margin: 8,
+                                
+                                shadowColor: "#000",
+                                shadowOffset: {
+                                    width: 5,
+                                    height: 5
+                                },
+                                shadowOpacity: 0.75,
+                                shadowRadius: 5,
+                                elevation: 9
+                            }}
                     
                         />
                     </View>
@@ -83,58 +113,119 @@ class BugDonations extends Component {
         console.log(progress);
 
         return (
-            <View>
-                <View style={{margin: 10}} >
-                    <Text onPress={() => this.toggleModal()}>Click here to view your stat!</Text>
-                    <Progress.Bar progress={progress} width = {null} height={20} animated  />
-                </View>
-                <FlatList
-                data={this.props.bugs.bugs.filter(
-                    bug => this.props.bugDonations.includes(bug.id)
-                )}
-                renderItem={renderBugDonationItem}
-                keyExtractor={item => item.id.toString()}
-                />
+            
+                <ImageBackground 
+                source={{uri: baseUrl + 'images/leaf_icon_bg.png'}}
+                resizeMode="cover"
+                style={styles.image}
+                blurRadius={.75}
+                >
+                    <View style={{margin: 10}} >
+                        <Progress.Bar 
+                            progress={progress} 
+                            width = {null} 
+                            height={25} 
+                            color={'#FFDAB9'}
+                            borderWidth={2}
+                            animated  
+                        />
+                        <Text 
+                            style={styles.progressText} 
+                            onPress={() => this.toggleModal()}>
+                                Click here to view your stat!
+                        </Text>
+                    </View>
+
+                    <FlatList
+                    data={this.props.bugs.bugs.filter(
+                        bug => this.props.bugDonations.includes(bug.id)
+                    )}
+                    renderItem={renderBugDonationItem}
+                    keyExtractor={item => item.id.toString()}
+                    />
+
                  <Modal
                     animationType={'slide'}
-                    transparent={false}
+                    transparent={true}
                     visible={this.state.showModal}
                     onRequestClose={() => this.toggleModal()}
+                    
                 >
                     <View style={styles.modal}>
-                        <Text>Percentage progress</Text>
-                        <Progress.Circle 
-                            size={300} 
-                            thickness={30} 
-                            progress={progress} 
-                            animate 
-                            showsText 
-                            formatText={() => {
-                                let progressText = ((progress * 100).toFixed(2)).toString();
-                                return `${progressText}%`;
-                            }}
-                            />
-                        <Text>Total number of bugs: 80</Text>
-                        <Text>You have caught {counter.length} out of 80.</Text>
-                        <Button
-                            onPress={() => {
-                                this.toggleModal();
+
+                        <View style={styles.modalView}>
+                            <View>
+                                <Text style={styles.modalTitle}>Percentage progress</Text>
+                            </View>
+
+                            <View style={styles.modalProgress}>
+                                <Progress.Circle 
+                                    size={200} 
+                                    thickness={30} 
+                                    progress={progress} 
+                                    color={'#CD853F'}
+                                    borderWidth={2}
+                                    animate 
+                                    showsText 
+                                    formatText={() => {
+                                        let progressText = ((progress * 100).toFixed(2)).toString();
+                                        return `${progressText}%`;
+                                    }}
+                                    />
+
+                                <Text style={styles.modalText}>Total number of bugs: 80</Text>
+
+                                <Text style={styles.modalText}>You have caught {counter.length} out of 80.</Text>
+                            </View>
+                            
+
+                            <Button
+                                onPress={() => {
+                                    this.toggleModal();
+                                    
+                                }}
                                 
-                            }}
-                            color='#5637DD'
-                            title='Close'
-                        />
+                                title='Close'
+                                titleStyle={{
+                                    fontFamily: 'Fink-Heavy',
+                                    color: '#000',
+                                    fontSize: 18
+                                }}
+                                buttonStyle={{
+                                    backgroundColor: '#FFEFD5',
+                                    
+                                    borderRadius: 10
+                                }}
+                                
+                                
+                            />
+                            {/* <Button
+                        title="Send Email"
+                        buttonStyle={{backgroundColor: '#F4A460', margin: 40}}
+                        icon={<Icon
+                            name='envelope-o'
+                            type='font-awesome'
+                            color='#fff'
+                            iconStyle={{marginRight: 10}}
+                        />}
+                        onPress={() => this.sendMail()}
+                    /> */}
+                        </View>
                     </View>
 
                 </Modal>
-            </View>
-            
-            
+            </ImageBackground>
         );
     }
 }
 
 const styles = StyleSheet.create({
+    progressText: {
+        fontFamily: 'Fink-Heavy',
+        textAlign: 'center',
+        fontSize: 15,
+        marginTop: 10
+    },
     deleteView: {
         flexDirection: 'row',
         justifyContent: 'flex-end',
@@ -142,9 +233,12 @@ const styles = StyleSheet.create({
         flex: 1
     },
     deleteTouchable: {
-        backgroundColor: 'red',
-        height: '100%',
+        backgroundColor: '#A52A2A',
+        height: '70%',
+        width: 70,
         justifyContent: 'center',
+        margin: 8,
+        borderRadius: 20
     },
     deleteText: {
         color: 'white',
@@ -155,20 +249,43 @@ const styles = StyleSheet.create({
     },
     modal: { 
         justifyContent: 'center',
-        margin: 20
+        margin: 20,
+        flex: 1,
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
+    modalView: {
+        backgroundColor: '#D2B48C',
+        padding: 30,
+        borderRadius: 20
     },
     modalTitle: {
         fontSize: 24,
-        fontWeight: 'bold',
-        backgroundColor: '#5637DD',
+        backgroundColor: '#FFEFD5',
         textAlign: 'center',
-        color: '#fff',
-        marginBottom: 20
+        color: '#000',
+        fontFamily: 'Fink-Heavy',
+        margin: 10,
+        padding: 10,
+        borderRadius: 10
+    },
+    modalProgress: {
+        margin: 10,
+        padding: 10,
+        backgroundColor: '#FFEFD5',
+        borderRadius: 10,
+        alignItems: 'center'
     },
     modalText: {
         fontSize: 18,
-        margin: 10
-    }
+        margin: 4,
+        fontFamily: 'Fink-Heavy',
+        textAlign: 'center'
+    },
+    image: {
+        flex: 1,
+        justifyContent: "center"
+      }
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(BugDonations);
