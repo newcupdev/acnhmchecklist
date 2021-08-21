@@ -49,7 +49,7 @@ class BugDonations extends Component {
                             style={styles.deleteTouchable}
                             onPress={() => this.props.deleteBugDonation(item.id)}
                         >
-                            {/* <Text style={styles.deleteText}>Remove</Text> */}
+                            
                             <Icon 
                                 name='trash-alt'
                                 type='font-awesome-5'
@@ -87,7 +87,6 @@ class BugDonations extends Component {
                                 shadowRadius: 5,
                                 elevation: 9
                             }}
-                    
                         />
                     </View>
                 </SwipeRow>
@@ -175,7 +174,7 @@ class BugDonations extends Component {
 
                                 <Text style={styles.modalText}>Total number of bugs: 80</Text>
 
-                                <Text style={styles.modalText}>You have caught {counter.length} out of 80.</Text>
+                                <Text style={styles.modalText}>You have donated {counter.length} out of 80.</Text>
                             </View>
                             
 
@@ -199,17 +198,7 @@ class BugDonations extends Component {
                                 
                                 
                             />
-                            {/* <Button
-                        title="Send Email"
-                        buttonStyle={{backgroundColor: '#F4A460', margin: 40}}
-                        icon={<Icon
-                            name='envelope-o'
-                            type='font-awesome'
-                            color='#fff'
-                            iconStyle={{marginRight: 10}}
-                        />}
-                        onPress={() => this.sendMail()}
-                    /> */}
+                           
                         </View>
                     </View>
 
