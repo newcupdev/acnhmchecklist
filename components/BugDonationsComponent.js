@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
     deleteTouchable: {
         backgroundColor: 'red',
         height: '100%',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     deleteText: {
         color: 'white',

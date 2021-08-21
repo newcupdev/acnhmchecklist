@@ -60,10 +60,10 @@ class Donations extends Component {
                             
                         }}
                         image={{uri: baseUrl + 'images/bug_bg.jpg'}}
-                        onPress={() => navigate('BugDonations', null)}
+                        
                         
                     >
-                        <Text style={styles.text} >
+                        <Text style={styles.text} onPress={() => navigate('BugDonations', null)}>
                         Click here to view donations
                         </Text>
                     </Card> 

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { FlatList, View, Text, Modal, Button, StyleSheet } from 'react-native';
+import { FlatList, View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { ListItem } from 'react-native-elements';
 import Loading from './LoadingComponent';
 import { connect } from 'react-redux';
@@ -13,25 +13,6 @@ const mapStateToProps = state => {
 
 class ArtsDirectory extends Component {
 
-    constructor(props){
-        super(props);
-
-        this.state = {
-           
-            showModal: false
-        }
-    }
-
-    toggleModal() {
-        this.setState({showModal: !this.state.showModal});
-    }
-
-    showArt(artId){
-        console.log(artId);
-        //console.log(this.props.arts);
-        this.toggleModal();
-    }
-
     static navigationOptions = {
         title: 'Arts Directory'
     }
@@ -41,19 +22,37 @@ class ArtsDirectory extends Component {
        
         const renderArtDirectoryItem = ({item}) => {
             return (
-                <View>
-                    <View>
-                        <ListItem
-                            title={item.name}
-                            //subtitle={item.catchphrase}
-                            //leftAvatar={{ source: require('./images/react-lake.jpg')}}
-                            onPress={() => navigate('ArtInfo', { artId: item.id })}
-                            
-                            leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
-                            //onPress={() => this.showArt(item.name)}
-                        />
-                    </View>
-                </View>
+                
+                <ListItem
+                    title={item.name}
+                    titleStyle={{
+                        fontFamily: "Fink-Heavy",
+                        fontSize: 20
+                    }}
+                    //subtitle={item.catchphrase}
+                    onPress={() => navigate('ArtInfo', { artId: item.id })}
+                    
+                    leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
+                    contentContainerStyle={{
+                        alignItems: "center",
+                        marginRight: 35
+                    }}
+                    containerStyle={{
+                        backgroundColor: "#FFE4B5",
+                        borderRadius: 20,
+                        overflow: "hidden",
+                        margin: 8,
+                        
+                        shadowColor: "#000",
+                        shadowOffset: {
+                            width: 5,
+                            height: 5
+                        },
+                        shadowOpacity: 0.75,
+                        shadowRadius: 5,
+                        elevation: 9
+                    }}
+                />
             );
         };
 
@@ -69,38 +68,19 @@ class ArtsDirectory extends Component {
         }
     
         return (
-            
-            <View>
-                
+            <ImageBackground 
+                source={{uri: baseUrl + 'images/leaf_icon_bg.png'}}
+                resizeMode="cover"
+                style={styles.image}
+                blurRadius={.75}
+                >
                 <FlatList
                     data={this.props.arts.arts}
                     renderItem={renderArtDirectoryItem}
                     keyExtractor={item => item.id.toString()}
                     
                 />
-            
-            <Modal
-                animationType={'slide'}
-                transparent={false}
-                visible={this.state.showModal}
-                onRequestClose={() => this.toggleModal()}
-            >
-                <View style={styles.modal}>
-                    <Text style={styles.modalText}>{this.props.arts.name}</Text>
-                    
-                    <Button
-                        onPress={() => {
-                            this.toggleModal();
-                        }}
-                        color='#5637DD'
-                        title='Close'
-                    />
-                </View>
-                
-
-            </Modal> 
-   
-            </View>
+            </ImageBackground>
         );
     }
 
@@ -108,22 +88,10 @@ class ArtsDirectory extends Component {
 }
 
 const styles = StyleSheet.create({
-    modal: { 
-        justifyContent: 'center',
-        margin: 20
-    },
-    modalTitle: {
-        fontSize: 24,
-        fontWeight: 'bold',
-        backgroundColor: '#5637DD',
-        textAlign: 'center',
-        color: '#fff',
-        marginBottom: 20
-    },
-    modalText: {
-        fontSize: 18,
-        margin: 10
-    }
+    image: {
+        flex: 1,
+        justifyContent: "center"
+      }
 });
 
 export default connect(mapStateToProps)(ArtsDirectory);
