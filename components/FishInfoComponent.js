@@ -27,6 +27,9 @@ function RenderFish(props) {
                     <View>
                         <Tile
                             imageSrc={{uri: fish.image}}
+                            imageProps={{
+                                resizeMode: "contain"
+                            }}
                         />
                     
                     </View>
