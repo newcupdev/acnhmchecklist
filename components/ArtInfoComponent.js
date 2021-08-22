@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, Image, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postArtDonation } from '../redux/ActionCreators';
@@ -23,35 +23,90 @@ function RenderArt(props) {
     const {art} = props;
 
     if (art) {
-        return (
-            
-                <ScrollView style={{backgroundColor: '#FFDAB9'}}>
 
-                    <View style={styles.imageContainer}>
-                        <View style={{flex: 1}}>
+        let artWarning = (art.hasFake) ? 'Yes! Redd sells a fake copy of this art!' : 'No, there are no fake copies of this art.';                           
+
+        return (
+            <ImageBackground
+                source={{uri: baseUrl + 'images/leaf_bg2.png'}}
+                resizeMode="cover"
+                blurRadius={1}
+                style={styles.image}
+            >
+                <ScrollView>
+
+                    <View style={{margin: 5, flexDirection: 'row'}}>
+                        <View style={styles.imageContainer}>
                             <Image 
                                 style={{width: 150, height: 150}}
                                 source={{uri: art.image}} 
                                 />
                         </View>
-                        <View style={{flex: 2}}></View>
-                        <View style={{flex: 3}}>
-                            
-                            <Text><Text style={styles.priceLabel}>Buy Price: </Text> {art.buyprice} bells</Text>
-                            <Text><Text style={styles.priceLabel}>Sell price: </Text> {art.sellprice} bells</Text>
-                            
+                        <View style={{flex: 1}}>
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Buy Price: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{art.buyprice} bells</Text>
+                                </View>
+                            </View>
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Sell Price: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{art.sellprice} bells</Text>
+                                </View>
+                            </View>
                         </View>
                     </View>
+                    
                     <Card
                         title= {art.name}
-                        wrapperStyle={{margin: 20}}
+                        titleStyle={{
+                            fontFamily: 'Fink-Heavy',
+                            fontWeight: 'normal',
+                            fontSize: 25
+                        }}
+                        containerStyle={{
+                            backgroundColor: '#FFE4B5', 
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                width: 5,
+                                height: 5
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 5,
+                            elevation: 9
+                        }}
                         >
+                        <View style={{margin: 5}}>
 
+                            <View style={styles.viewContainer}>
+                                <Text style={styles.viewLabelText}>Does it have any fake copies?</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{artWarning}</Text>
+                                </View>
+                            </View>
 
-                        {/* <Text><Text style={styles.textLabel}>Art has a fake version: </Text> {art.hasFake} </Text> */}
+                            <View style={styles.viewContainer}>
+                                <Text style={styles.viewLabelText}>Blather's Description:</Text>
+                                
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{art.museumphrase}</Text>
+                                </View>
+                            </View>
 
+                        </View>
+
+                        
+                        {/* <Text>{artWarning}</Text>
                         <Text style={styles.textLabel}>Blather's art description: </Text>
-                        <Text>{'\t'}{art.museumphrase}</Text>
+                        <Text>{'\t'}{art.museumphrase}</Text> */}
 
                         <View style={{alignItems: 'center'}}>
                             <Icon
@@ -68,10 +123,8 @@ function RenderArt(props) {
 
 
                     </Card>
-
-                    
                 </ScrollView>
-            
+            </ImageBackground>
         );
     }
     return <View />;
@@ -99,20 +152,51 @@ class ArtInfo extends Component {
 }
 
 const styles = StyleSheet.create({
-    textLabel: {
-        fontWeight: "bold"
-    },
-    priceLabel: {
-        fontWeight: "bold"
-        
+    
+    image: {
+        flex: 1,
+        justifyContent: "center"
     },
     imageContainer: {
-        margin: 40,
-        height: 140,
+        backgroundColor: '#FFEFD5', 
+        flex: 1, 
+        margin: 10,
+        borderRadius: 20,
         alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        flexDirection: 'row'
+        justifyContent: 'center'
+    },
+    viewContainer: {
+        backgroundColor: '#F4A460', 
+        margin: 3,
+        padding: 10, 
+        borderRadius: 10, 
+        overflow: 'hidden'
+    },
+    viewLabelText: {
+        fontFamily: 'Fink-Heavy',
+        fontSize: 18,
+        margin: 5
+    },
+    viewTextLabelContainer: {
+        backgroundColor: '#FFDAB9', 
+        flex: 2, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textContainer: {
+        backgroundColor: '#FFEFD5', 
+        flex: 3, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textInfo: {
+        fontFamily: 'Varela-Round',
+        fontSize: 15,
+        margin: 5
     }
 });
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, Image, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, Image, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postFossilDonation } from '../redux/ActionCreators';
@@ -23,34 +23,77 @@ function RenderFossil(props) {
 
     if (fossil) {
         return (
-            
-                <ScrollView style={{backgroundColor: '#FFDAB9'}}>
+            <ImageBackground
+                source={{uri: baseUrl + 'images/acnh_ground_bg2.png'}}
+                resizeMode="cover"
+                blurRadius={1}
+                style={styles.image}
+            >
+                <ScrollView>
 
-                    <View style={styles.imageContainer}>
-                        <View style={{flex: 1}}>
+                <View style={{margin: 5, flexDirection: 'row'}}>
+                        <View style={styles.imageContainer}>
                             <Image 
                                 style={{width: 150, height: 150}}
                                 source={{uri: fossil.image}} 
                                 />
                         </View>
-                        <View style={{flex: 2}}></View>
-                        <View style={{flex: 3}}>
-                            
-                            <Text><Text style={styles.priceLabel}>Price: </Text> {fossil.price} bells</Text>
-                            <Text><Text style={styles.priceLabel}>Part of: </Text> {fossil.partof}</Text>
-                            
+                        <View style={{flex: 1, justifyContent: 'center'}}>
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Price: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fossil.price} bells</Text>
+                                </View>
+                            </View>
                         </View>
                     </View>
+
+
                     <Card
                         title= {fossil.name}
-                        wrapperStyle={{margin: 20}}
+                        titleStyle={{
+                            fontFamily: 'Fink-Heavy',
+                            fontWeight: 'normal',
+                            fontSize: 25
+                        }}
+                        containerStyle={{
+                            backgroundColor: '#FFE4B5', 
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                width: 5,
+                                height: 5
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 5,
+                            elevation: 9
+                        }}
                         >
-
-
                         
+                        <View style={{margin: 5}}>
 
-                        <Text style={styles.textLabel}>Blather's fossil description: </Text>
-                        <Text>{'\t'}{fossil.museumphrase}</Text>
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Part of: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fossil.partof}</Text>
+                                </View>
+                            </View>
+
+                            <View style={styles.viewContainer}>
+                                <Text style={styles.viewLabelText}>Blather's Description:</Text>
+                                
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fossil.museumphrase}</Text>
+                                </View>
+                            </View>
+
+                        </View>
 
                         <View style={{alignItems: 'center'}}>
                             <Icon
@@ -64,11 +107,9 @@ function RenderFossil(props) {
                                     console.log('Already set as a favorite') : props.markFossilDonation()}
                             />
                         </View>
-
-
                     </Card>
                 </ScrollView>
-            
+            </ImageBackground>
         );
     }
     return <View />;
@@ -96,20 +137,51 @@ class FossilInfo extends Component {
 }
 
 const styles = StyleSheet.create({
-    textLabel: {
-        fontWeight: "bold"
-    },
-    priceLabel: {
-        fontWeight: "bold"
-        
+    
+    image: {
+        flex: 1,
+        justifyContent: "center"
     },
     imageContainer: {
-        margin: 40,
-        height: 140,
+        backgroundColor: '#FFEFD5', 
+        flex: 1, 
+        margin: 10,
+        borderRadius: 20,
         alignItems: 'center',
-        justifyContent: 'center',
-        flex: 1,
-        flexDirection: 'row'
+        justifyContent: 'center'
+    },
+    viewContainer: {
+        backgroundColor: '#F4A460', 
+        margin: 3,
+        padding: 10, 
+        borderRadius: 10, 
+        overflow: 'hidden'
+    },
+    viewLabelText: {
+        fontFamily: 'Fink-Heavy',
+        fontSize: 18,
+        margin: 5
+    },
+    viewTextLabelContainer: {
+        backgroundColor: '#FFDAB9', 
+        flex: 2, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textContainer: {
+        backgroundColor: '#FFEFD5', 
+        flex: 3, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textInfo: {
+        fontFamily: 'Varela-Round',
+        fontSize: 15,
+        margin: 5
     }
 });
 
