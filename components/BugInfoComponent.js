@@ -26,7 +26,7 @@ function RenderBug(props) {
         return (
             <ImageBackground 
                 source={{uri: baseUrl + 'images/acnh_grass_bg.jpg'}}
-                resizeMode="repeat"
+                resizeMode="cover"
                 blurRadius={1}
                 style={styles.image}
                 >
@@ -87,6 +87,15 @@ function RenderBug(props) {
                                     </View>
                                 </View>
 
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Time: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.time}</Text>
+                                </View>
                             </View>
                             
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
@@ -207,7 +216,8 @@ const styles = StyleSheet.create({
         flex: 2, 
         margin: 5,
         borderRadius: 7,
-        alignItems: 'center'
+        alignItems: 'center',
+        justifyContent: 'center'
     },
     textContainer: {
         backgroundColor: '#FFEFD5', 
@@ -218,7 +228,7 @@ const styles = StyleSheet.create({
     },
     textInfo: {
         fontFamily: 'Varela-Round',
-        fontSize: 16,
+        fontSize: 15,
         margin: 5
     }
 });

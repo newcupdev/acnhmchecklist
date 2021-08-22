@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet, ScrollView, Image } from 'react-native';
+import { Text, View, StyleSheet, ScrollView, ImageBackground } from 'react-native';
 import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postFishDonation } from '../redux/ActionCreators';
@@ -22,8 +22,13 @@ function RenderFish(props) {
 
     if (fish) {
         return (
-            <View>
-                <ScrollView style={{backgroundColor: '#FFDAB9'}}>
+            <ImageBackground
+                source={{uri: baseUrl + 'images/acnh_water_bg2.jpg'}}
+                resizeMode="cover"
+                blurRadius={1}
+                style={styles.image}
+                >
+                <ScrollView>
                     <View>
                         <Tile
                             imageSrc={{uri: fish.image}}
@@ -36,25 +41,121 @@ function RenderFish(props) {
 
                     <Card
                         title= {fish.name}
-                        wrapperStyle={{margin: 20}}>
+                        titleStyle={{
+                            fontFamily: 'Fink-Heavy',
+                            fontWeight: 'normal',
+                            fontSize: 25
+                        }}
+                        containerStyle={{
+                            backgroundColor: '#FFE4B5', 
+                            margin: 10,
+                            borderRadius: 20,
+                            overflow: 'hidden',
+                            shadowColor: '#000',
+                            shadowOffset: {
+                                width: 5,
+                                height: 5
+                            },
+                            shadowOpacity: 0.25,
+                            shadowRadius: 5,
+                            elevation: 9
+                        }}>
                         
-                        <Text style={styles.textLabel}>Region Availability (North/South): </Text>
-                        <Text><Text style={styles.textLabel}>N: </Text>{fish.northavailability}</Text>
-                        <Text><Text style={styles.textLabel}>S: </Text>{fish.southavailability}</Text>
+                        <View style={{margin: 5}}>
 
+                            <View style={styles.viewContainer}>
 
-                        <Text><Text style={styles.textLabel}>Time: </Text> {fish.time}</Text>
-                        <Text><Text style={styles.textLabel}>Location: </Text> {fish.location}</Text>
-                        <Text><Text style={styles.textLabel}>Rarity: </Text> {fish.rarity}</Text>
-                        <Text><Text style={styles.textLabel}>Shadow: </Text> {fish.shadow}</Text>
-                        <Text><Text style={styles.textLabel}>Price: </Text> {fish.price} bells</Text>
-                        <Text><Text style={styles.textLabel}>CJ price: </Text> {fish.cjprice} bells</Text>
+                                <Text style={styles.viewLabelText}>Region Availability:</Text>
 
-                        <Text style={styles.textLabel}>Your catchphrase: </Text>
-                        <Text>{'\t'}{fish.catchphrase}</Text>
+                                <View style={{flexDirection: 'row'}}>
+                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                        <Text style={styles.viewLabelText}>North:</Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{fish.northavailability}</Text>
+                                    </View>
+                                </View>
 
-                        <Text style={styles.textLabel}>Blather's catchphrase: </Text>
-                        <Text>{'\t'}{fish.museumphrase}</Text>
+                                <View style={{flexDirection: 'row'}}>
+                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                        <Text style={styles.viewLabelText}>South:</Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{fish.southavailability}</Text>
+                                    </View>
+                                </View>
+
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Time: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.time}</Text>
+                                </View>
+                            </View>
+                            
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Location: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.location}</Text>
+                                </View>
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Rarity:</Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.rarity}</Text>
+                                </View>
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Shadow:</Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.shadow}</Text>
+                                </View>
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Price: </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.price} bells</Text>
+                                </View>
+                            </View>
+
+                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Price (CJ): </Text>
+                                </View>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.cjprice} bells</Text>
+                                </View>
+                            </View>
+
+                            <View style={styles.viewContainer}>
+                                <Text style={styles.viewLabelText}>Your catchphrase:</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.catchphrase}</Text>
+                                </View>
+                            </View>
+
+                            <View style={styles.viewContainer}>
+                                <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{fish.museumphrase}</Text>
+                                </View>
+                            </View>
+                        </View>
 
                         <View style={{alignItems: 'center'}}>
                             <Icon
@@ -68,13 +169,10 @@ function RenderFish(props) {
                                     console.log('Already set as a favorite') : props.markFishDonation()}
                             />
                         </View>
-
-
-                        
-
+            
                     </Card>
                 </ScrollView>
-            </View>
+            </ImageBackground>
         );
     }
     return <View />;
@@ -102,8 +200,42 @@ class FishInfo extends Component {
 }
 
 const styles = StyleSheet.create({
-    textLabel: {
-        fontWeight: "bold"
+    
+    image: {
+        flex: 1,
+        justifyContent: "center"
+    },
+    viewContainer: {
+        backgroundColor: '#F4A460', 
+        margin: 3,
+        padding: 10, 
+        borderRadius: 10, 
+        overflow: 'hidden'
+    },
+    viewLabelText: {
+        fontFamily: 'Fink-Heavy',
+        fontSize: 18,
+        margin: 5
+    },
+    viewTextLabelContainer: {
+        backgroundColor: '#FFDAB9', 
+        flex: 2, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    textContainer: {
+        backgroundColor: '#FFEFD5', 
+        flex: 3, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center'
+    },
+    textInfo: {
+        fontFamily: 'Varela-Round',
+        fontSize: 15,
+        margin: 5
     }
 });
 
