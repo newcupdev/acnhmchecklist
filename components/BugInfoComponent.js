@@ -70,73 +70,73 @@ function RenderBug(props) {
                                 <Text style={styles.viewLabelText}>Region Availability:</Text>
 
                                 <View style={{flexDirection: 'row'}}>
-                                    <View style={{backgroundColor: '#FFEFD5', flex: 1, margin: 5}}>
+                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
                                         <Text style={styles.viewLabelText}>North:</Text>
                                     </View>
-                                    <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                        <Text>{bug.northavailability}</Text>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.northavailability}</Text>
                                     </View>
                                 </View>
 
                                 <View style={{flexDirection: 'row'}}>
-                                    <View style={{backgroundColor: '#FFEFD5', flex: 1, margin: 5}}>
+                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
                                         <Text style={styles.viewLabelText}>South:</Text>
                                     </View>
-                                    <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                        <Text>{bug.southavailability}</Text>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.southavailability}</Text>
                                     </View>
                                 </View>
 
                             </View>
                             
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 2, margin: 5}}>
+                                <View style={styles.viewTextLabelContainer}>
                                     <Text style={styles.viewLabelText}>Location: </Text>
                                 </View>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                    <Text>{bug.location}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.location}</Text>
                                 </View>
                             </View>
 
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 1, margin: 5}}>
+                                <View style={styles.viewTextLabelContainer}>
                                     <Text style={styles.viewLabelText}>Rarity:</Text>
                                 </View>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                    <Text>{bug.rarity}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.rarity}</Text>
                                 </View>
                             </View>
 
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 1, margin: 5}}>
+                                <View style={styles.viewTextLabelContainer}>
                                     <Text style={styles.viewLabelText}>Price: </Text>
                                 </View>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                    <Text>{bug.price}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.price} bells</Text>
                                 </View>
                             </View>
 
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 1, margin: 5}}>
-                                    <Text style={styles.viewLabelText}>Price by Flick: </Text>
+                                <View style={styles.viewTextLabelContainer}>
+                                    <Text style={styles.viewLabelText}>Price (Flick): </Text>
                                 </View>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                    <Text>{bug.flickprice}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.flickprice} bells</Text>
                                 </View>
                             </View>
 
                             <View style={styles.viewContainer}>
                                 <Text style={styles.viewLabelText}>Your catchphrase:</Text>
-                                <View style={{backgroundColor: '#FFEFD5', flex: 2, margin: 5}}>
-                                    <Text>{bug.catchphrase}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.catchphrase}</Text>
                                 </View>
                             </View>
 
                             <View style={styles.viewContainer}>
                                 <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
                                 
-                                <View style={{backgroundColor: '#FFEFD5', flex: 3, margin: 5}}>
-                                    <Text>{bug.museumphrase}</Text>
+                                <View style={styles.textContainer}>
+                                    <Text style={styles.textInfo}>{bug.museumphrase}</Text>
                                 </View>
                             </View>
                         </View>
@@ -185,9 +185,7 @@ class BugInfo extends Component {
 }
 
 const styles = StyleSheet.create({
-    textLabel: {
-        fontWeight: "bold"
-    },
+    
     image: {
         flex: 1,
         justifyContent: "center"
@@ -202,6 +200,25 @@ const styles = StyleSheet.create({
     viewLabelText: {
         fontFamily: 'Fink-Heavy',
         fontSize: 18,
+        margin: 5
+    },
+    viewTextLabelContainer: {
+        backgroundColor: '#FFDAB9', 
+        flex: 2, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center'
+    },
+    textContainer: {
+        backgroundColor: '#FFEFD5', 
+        flex: 3, 
+        margin: 5,
+        borderRadius: 7,
+        alignItems: 'center'
+    },
+    textInfo: {
+        fontFamily: 'Varela-Round',
+        fontSize: 16,
         margin: 5
     }
 });

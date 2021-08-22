@@ -11,7 +11,8 @@ import * as Font from 'expo-font';
 const { persistor, store } = ConfigureStore();
 
 const getFonts = () => Font.loadAsync({
-        'Fink-Heavy' : require('./assets/fonts/FinkHeavy.ttf')
+        'Fink-Heavy' : require('./assets/fonts/FinkHeavy.ttf'),
+        'Varela-Round' : require('./assets/fonts/VarelaRound-Regular.ttf')
     });
 
 
