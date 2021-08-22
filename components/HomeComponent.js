@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, ScrollView, Text, StyleSheet, ImageBackground } from 'react-native';
+import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Tile } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
 
@@ -12,24 +12,14 @@ class Home extends Component {
     render() {
         return (
             <ImageBackground 
-                source={{uri: baseUrl + 'images/leaf_icon_bg.png'}}
+                source={{uri: baseUrl + 'images/acnhbg.png'}}
                 resizeMode="cover"
                 style={styles.image}
                 >
-                <ScrollView>
-                    <Tile
-                        imageSrc={{uri: baseUrl + 'images/animal_crossing_bg.jpeg'}}
-                        featured
-                    />
-                    <View style={styles.container}>
-                        <Text style={styles.textLabel}>Animal Crossing New Horizon</Text>
-                        <Text style={styles.textLabel}>Museum Tracker</Text>
-                    </View>
-                    <Tile
-                        imageSrc={{uri: baseUrl + 'images/acnh_museum_up.jpg'}}
-                        featured
-                    />
-                </ScrollView>
+                <View style={styles.viewContainer}>
+                    <Text style={styles.subText}>Musuem</Text>
+                    <Text style={styles.subText}>Tracker</Text>
+                </View>
             </ImageBackground>
         );
     }
@@ -50,7 +40,27 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: "center"
-      }
+    },
+    viewContainer: {
+        margin: 50,
+        padding: 20, 
+        backgroundColor: '#D2B48C',  
+        alignItems: 'center', 
+        justifyContent: 'center',
+        borderRadius: 20,
+        padding: 10
+        
+    },
+    subText: {
+        fontFamily: 'Fink-Heavy',
+        fontSize: 45,
+        margin: 1,
+        color: '#000',
+        textShadowColor: "#fff",
+        textShadowOffset: {width: 0, height: 0},
+        textShadowRadius: 20,
+        
+    }
 });
 
 export default Home

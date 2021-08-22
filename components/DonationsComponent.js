@@ -210,7 +210,7 @@ const styles = StyleSheet.create({
         margin: 10,
         fontSize: 20, 
         textAlign: 'center',
-        fontFamily: "Fink-Heavy"
+        fontFamily: "Fink-Heavy",
     }
     
   });
