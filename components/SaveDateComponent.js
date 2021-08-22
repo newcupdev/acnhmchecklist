@@ -4,6 +4,7 @@ import { Button } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import * as Notifications from 'expo-notifications';
+import * as Animatable from 'react-native-animatable';
 
 class SaveDate extends Component {
 
@@ -66,7 +67,10 @@ class SaveDate extends Component {
                 <View style={{justifyContent: 'center', alignItems: 'center'}}>
 
                     <View style={styles.imageContainer}>
-                        <Image 
+                        <Animatable.Image
+                            animation='rubberBand'
+                            duration={2000}
+                            delay={1000} 
                             style={{resizeMode: 'cover', width: 500, height: 330}}
                             source={{uri: baseUrl + 'images/bugoff.jpg'}} 
                             
@@ -75,112 +79,135 @@ class SaveDate extends Component {
                     </View>
 
                     <View style={styles.imageContainer}>
-                        <Image 
+                        <Animatable.Image
+                            animation='rubberBand'
+                            duration={2000}
+                            delay={1000}  
                             style={{resizeMode: 'cover', width: 500, height: 330}}
                             source={{uri: baseUrl + 'images/fishtourney.png'}} 
                             />
                     </View>
 
+                    
                     <View style={styles.formViewContainer}>
 
-                        
-                    
-                            <View style={styles.formRow}>
-                                <Text style={styles.formLabel}>Event</Text>
-                                <Picker 
-                                    style={styles.formItem}
-                                    selectedValue={this.state.dayEvent}
-                                    onValueChange={itemValue => this.setState({dayEvent: itemValue})}
-                                >
-                                    <Picker.Item label='Bug off' value='Bug off' />
-                                    <Picker.Item label='Fish tourney' value='Fish tourney' />
-                                    
-                                </Picker>
-                            </View>
+                        <View style={styles.formRow}>
+                            <Animatable.Text 
+                                animation='lightSpeedIn'
+                                duration={2000}
+                                delay={1000} 
+                                style={styles.formLabel}
+                            >
+                                Event
+                            </Animatable.Text>
+                            <Picker 
+                                style={styles.formItem}
+                                selectedValue={this.state.dayEvent}
+                                onValueChange={itemValue => this.setState({dayEvent: itemValue})}
+                            >
+                                <Picker.Item label='Bug off' value='Bug off' />
+                                <Picker.Item label='Fish tourney' value='Fish tourney' />
+                                
+                            </Picker>
+                        </View>
     
-                            <View style={styles.formRow}>
-                                <Text style={styles.formLabel}>My island?</Text>
-                                <Switch
-                                    style={styles.formItem}
-                                    value={this.state.myIsland}
-                                    trackColor={{true: '#F4A460', false: null}}
-                                    onValueChange={value => this.setState({myIsland: value})}
-                                />
-                            </View>
+                        <View style={styles.formRow}>
+                            <Animatable.Text
+                                animation='lightSpeedIn' 
+                                duration={2000}
+                                delay={1000}
+                                style={styles.formLabel}
+                            >
+                                My island?
+                            </Animatable.Text>
+                            <Switch
+                                style={styles.formItem}
+                                value={this.state.myIsland}
+                                trackColor={{true: '#F4A460', false: null}}
+                                onValueChange={value => this.setState({myIsland: value})}
+                            />
+                        </View>
 
-                            <View style={styles.formRow}>
-                                <Text style={styles.formLabel}>Date</Text>
-                                <Button
-                                    onPress={() =>
-                                        this.setState({showCalendar: !this.state.showCalendar})
-                                    }
-                                    title={this.state.date.toLocaleDateString('en-US')}
-                                    titleStyle={{
-                                        fontFamily: 'Varela-Round'
-                                    }}
-                                    
-                                    accessibilityLabel='Tap me to save the date'
-                                    buttonStyle={{
-                                        borderRadius: 20,
-                                        backgroundColor: '#F4A460',
-                                        margin: 5
-                                    }}
-                                    
-                                />
-                            </View>
+                        <View style={styles.formRow}>
+                            <Animatable.Text
+                                animation='lightSpeedIn' 
+                                duration={2000}
+                                delay={1000}
+                                style={styles.formLabel}
+                            >
+                                Date
+                            </Animatable.Text>
+                            <Button
+                                onPress={() =>
+                                    this.setState({showCalendar: !this.state.showCalendar})
+                                }
+                                title={this.state.date.toLocaleDateString('en-US')}
+                                titleStyle={{
+                                    fontFamily: 'Varela-Round'
+                                }}
+                                
+                                accessibilityLabel='Tap me to save the date'
+                                buttonStyle={{
+                                    borderRadius: 20,
+                                    backgroundColor: '#F4A460',
+                                    margin: 5
+                                }}
+                                
+                            />
+                        </View>
     
-                            {this.state.showCalendar && (
-                                <DateTimePicker
-                                    value={this.state.date}
-                                    mode={'date'}
-                                    display='default'
-                                    onChange={(event, selectedDate) => {
-                                        selectedDate && this.setState({date: selectedDate, showCalendar: false});
-                                    }}
-                                    style={styles.formItem}
-                                />
-                            )}
-    
-                            <View style={styles.formRow}>
-                                <Button
-                                    
-                                    title='Save'
-                                    titleStyle={{
-                                        fontFamily: 'Varela-Round'
-                                    }}
-                                    buttonStyle={{
-                                        borderRadius: 20,
-                                        backgroundColor: '#F4A460',
-                                        margin: 5,
-                                        width: 80
-                                    }}
-                                    accessibilityLabel='Tap me to save the date'
-                
-                                    onPress={() =>
-                                        Alert.alert(
-                                            'Begin Saving',
-                                            'Event of the day: ' + this.state.dayEvent + '\n \n' +
-                                            'The event will be ' + (this.state.myIsland ? 'in my island' : 'in my friend\'s island') + '\n \n' +
-                                            'Date: ' + this.state.date.toLocaleDateString('en-US'),
-                                            [
-                                                {
-                                                    text: 'Cancel',
-                                                    onPress: () => this.resetForm(),
-                                                    style: 'cancel'
-                                                },
-                                                {
-                                                    text: 'OK',
-                                                    onPress: () => {
-                                                        this.presentLocalNotification(this.state.date.toLocaleDateString('en-US'), this.state.dayEvent, this.state.myIsland);
-                                                        this.resetForm();
-                                                    }
-                                                },
-                                            ],
-                                            { cancelable: false }
-                                        )
-                                    }
-                                />
-                            </View>
+                        {this.state.showCalendar && (
+                            <DateTimePicker
+                                value={this.state.date}
+                                mode={'date'}
+                                display='default'
+                                onChange={(event, selectedDate) => {
+                                    selectedDate && this.setState({date: selectedDate, showCalendar: false});
+                                }}
+                                style={styles.formItem}
+                            />
+                        )}
+
+                        <View style={styles.formRow}>
+                            <Button
+                                
+                                title='Save'
+                                titleStyle={{
+                                    fontFamily: 'Varela-Round'
+                                }}
+                                buttonStyle={{
+                                    borderRadius: 20,
+                                    backgroundColor: '#F4A460',
+                                    margin: 5,
+                                    width: 80
+                                }}
+                                accessibilityLabel='Tap me to save the date'
+            
+                                onPress={() =>
+                                    Alert.alert(
+                                        'Begin Saving',
+                                        'Event of the day: ' + this.state.dayEvent + '\n \n' +
+                                        'The event will be ' + (this.state.myIsland ? 'in my island' : 'in my friend\'s island') + '\n \n' +
+                                        'Date: ' + this.state.date.toLocaleDateString('en-US'),
+                                        [
+                                            {
+                                                text: 'Cancel',
+                                                onPress: () => this.resetForm(),
+                                                style: 'cancel'
+                                            },
+                                            {
+                                                text: 'OK',
+                                                onPress: () => {
+                                                    this.presentLocalNotification(this.state.date.toLocaleDateString('en-US'), this.state.dayEvent, this.state.myIsland);
+                                                    this.resetForm();
+                                                }
+                                            },
+                                        ],
+                                        { cancelable: false }
+                                    )
+                                }
+                            />
+                        </View>
                         
                     </View>
                 </View>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, StyleSheet, ImageBackground } from 'react-native';
 import { Tile } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable'
 
 class Home extends Component {
 
@@ -16,10 +17,15 @@ class Home extends Component {
                 resizeMode="cover"
                 style={styles.image}
                 >
-                <View style={styles.viewContainer}>
+                <Animatable.View 
+                    style={styles.viewContainer}
+                    animation='bounceIn'
+                    duration={2000}
+                    delay={1000}
+                >
                     <Text style={styles.subText}>Musuem</Text>
                     <Text style={styles.subText}>Tracker</Text>
-                </View>
+                </Animatable.View>
             </ImageBackground>
         );
     }

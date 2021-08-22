@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, ImageBackground, StyleSheet, Text, Modal } from 'react-native';
 import { Button } from 'react-native-elements';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 
 
@@ -32,42 +33,48 @@ class About extends Component {
                 resizeMode="cover"
                 style={styles.image}
             >
-                <View style={{justifyContent: 'center', alignItems: 'center'}}>
-                    <View style={styles.viewContainer}>
-                        <Text style={styles.viewLabelText}>Animal Crossing: New Horizon - Museum Tracker</Text>
-                                
-                        <View style={styles.textContainer}>
-                            <Text style={styles.textInfo}>Let's help Blathers complete the musuem exhibits.</Text>
-                            <Text style={styles.textInfo}>Track all your donations:</Text>
-                            <Text style={styles.textInfo}>{'\t'} - 80 Bugs</Text>
-                            <Text style={styles.textInfo}>{'\t'} - 80 Fish</Text>
-                            <Text style={styles.textInfo}>{'\t'} - 40 Sea Creatures</Text>
-                            <Text style={styles.textInfo}>{'\t'} - 43 Art</Text>
-                            <Text style={styles.textInfo}>{'\t'} - 73 Fossils</Text>
-                            <Text style={styles.textInfo}>Track item as donated from the directory and check your progress.</Text>
-                        </View>
+                <Animatable.View
+                    animation='fadeIn'
+                    duration={3000}
+                    delay={1000}
+                >
+                    <View style={{justifyContent: 'center', alignItems: 'center'}}>
+                        <View style={styles.viewContainer}>
+                            <Text style={styles.viewLabelText}>Animal Crossing: New Horizon - Museum Tracker</Text>
+                                    
+                            <View style={styles.textContainer}>
+                                <Text style={styles.textInfo}>Let's help Blathers complete the musuem exhibits.</Text>
+                                <Text style={styles.textInfo}>Track all your donations:</Text>
+                                <Text style={styles.textInfo}>{'\t'} - 80 Bugs</Text>
+                                <Text style={styles.textInfo}>{'\t'} - 80 Fish</Text>
+                                <Text style={styles.textInfo}>{'\t'} - 40 Sea Creatures</Text>
+                                <Text style={styles.textInfo}>{'\t'} - 43 Art</Text>
+                                <Text style={styles.textInfo}>{'\t'} - 73 Fossils</Text>
+                                <Text style={styles.textInfo}>Track item as donated from the directory and check your progress.</Text>
+                            </View>
 
-                        <View style={styles.buttonContainer}>
-                            <Button
-                                
-                                title='Copyright'
-                                titleStyle={{
-                                    fontFamily: 'Varela-Round'
-                                }}
-                                buttonStyle={{
-                                    borderRadius: 20,
-                                    backgroundColor: '#F4A460',
-                                    margin: 5,
-                                    width: 100
-                                }}
-                                accessibilityLabel='Tap me to save the date'
-            
-                                onPress={() => this.toggleModal() }
-                            />
-                        </View>
+                            <View style={styles.buttonContainer}>
+                                <Button
+                                    
+                                    title='Copyright'
+                                    titleStyle={{
+                                        fontFamily: 'Varela-Round'
+                                    }}
+                                    buttonStyle={{
+                                        borderRadius: 20,
+                                        backgroundColor: '#F4A460',
+                                        margin: 5,
+                                        width: 100
+                                    }}
+                                    accessibilityLabel='Tap me to save the date'
+                
+                                    onPress={() => this.toggleModal() }
+                                />
+                            </View>
 
+                        </View>
                     </View>
-                </View>
+                </Animatable.View>
 
                 <Modal
                     animationType={'slide'}

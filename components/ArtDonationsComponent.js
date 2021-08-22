@@ -8,6 +8,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { deleteArtDonation } from '../redux/ActionCreators';
 import * as Progress from 'react-native-progress';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -43,51 +44,57 @@ class ArtDonations extends Component {
         
         const renderArtDonationItem = ({item}) => {
             return (
-                <SwipeRow rightOpenValue={-100} style={styles.swipeRow}>
-                    <View style={styles.deleteView}>
-                        <TouchableOpacity
-                            style={styles.deleteTouchable}
-                            onPress={() => this.props.deleteArtDonation(item.id)}
-                        >
-                        <Icon 
-                            name='trash-alt'
-                            type='font-awesome-5'
-                            color='#B0C4DE'
-                            size={27}
-                            solid
-                        />
-                        </TouchableOpacity>
-                    </View>
-                    <View>
-                        <ListItem
-                            title={item.name}
-                            titleStyle={{
-                                fontFamily: "Fink-Heavy",
-                                fontSize: 20
-                            }}
-                            leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
-                            contentContainerStyle={{
-                                alignItems: "center",
-                                marginRight: 35
-                            }}
-                            containerStyle={{
-                                backgroundColor: "#FFE4B5",
-                                borderRadius: 20,
-                                overflow: "hidden",
-                                margin: 8,
-                                
-                                shadowColor: "#000",
-                                shadowOffset: {
-                                    width: 5,
-                                    height: 5
-                                },
-                                shadowOpacity: 0.75,
-                                shadowRadius: 5,
-                                elevation: 9
-                            }}
-                        />
-                    </View>
-                </SwipeRow>
+                <Animatable.View
+                    animation='fadeInDown'
+                    duration={2000}
+                    delay={1000}
+                >
+                    <SwipeRow rightOpenValue={-100} style={styles.swipeRow}>
+                        <View style={styles.deleteView}>
+                            <TouchableOpacity
+                                style={styles.deleteTouchable}
+                                onPress={() => this.props.deleteArtDonation(item.id)}
+                            >
+                            <Icon 
+                                name='trash-alt'
+                                type='font-awesome-5'
+                                color='#B0C4DE'
+                                size={27}
+                                solid
+                            />
+                            </TouchableOpacity>
+                        </View>
+                        <View>
+                            <ListItem
+                                title={item.name}
+                                titleStyle={{
+                                    fontFamily: "Fink-Heavy",
+                                    fontSize: 20
+                                }}
+                                leftAvatar={{ source: {uri: baseUrl + 'images/leaf_icon.png'}}}
+                                contentContainerStyle={{
+                                    alignItems: "center",
+                                    marginRight: 35
+                                }}
+                                containerStyle={{
+                                    backgroundColor: "#FFE4B5",
+                                    borderRadius: 20,
+                                    overflow: "hidden",
+                                    margin: 8,
+                                    
+                                    shadowColor: "#000",
+                                    shadowOffset: {
+                                        width: 5,
+                                        height: 5
+                                    },
+                                    shadowOpacity: 0.75,
+                                    shadowRadius: 5,
+                                    elevation: 9
+                                }}
+                            />
+                        </View>
+                    </SwipeRow>
+                </Animatable.View>
             );
         };
 

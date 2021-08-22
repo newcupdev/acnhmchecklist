@@ -4,6 +4,7 @@ import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postSeaCreatureDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -31,127 +32,139 @@ function RenderSeacreature(props) {
                 style={styles.image}
             >
                 <ScrollView>
-                    <Tile
-                        imageSrc={{uri: seacreature.image}}
-                        featured
-                        imageProps={{
-                            resizeMode: "contain"
-                        }}
-                    />
-
-                    <Card
-                        title= {seacreature.name}
-                        titleStyle={{
-                            fontFamily: 'Fink-Heavy',
-                            fontWeight: 'normal',
-                            fontSize: 25
-                        }}
-                        containerStyle={{
-                            backgroundColor: '#FFE4B5', 
-                            margin: 10,
-                            borderRadius: 20,
-                            overflow: 'hidden',
-                            shadowColor: '#000',
-                            shadowOffset: {
-                                width: 5,
-                                height: 5
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 5,
-                            elevation: 9
+                    <Animatable.View
+                        animation='wobble'
+                        duration={5000}
+                        delay={1000}
+                    >
+                        <Tile
+                            imageSrc={{uri: seacreature.image}}
+                            featured
+                            imageProps={{
+                                resizeMode: "contain"
                             }}
-                        >
-                        
-                        <View style={{margin: 5}}>
-                            <View style={styles.viewContainer}>
-
-                                <Text style={styles.viewLabelText}>Region Availability:</Text>
-
-                                <View style={{flexDirection: 'row'}}>
-                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
-                                        <Text style={styles.viewLabelText}>North:</Text>
-                                    </View>
-                                    <View style={styles.textContainer}>
-                                        <Text style={styles.textInfo}>{seacreature.northavailability}</Text>
-                                    </View>
-                                </View>
-
-                                <View style={{flexDirection: 'row'}}>
-                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
-                                        <Text style={styles.viewLabelText}>South:</Text>
-                                    </View>
-                                    <View style={styles.textContainer}>
-                                        <Text style={styles.textInfo}>{seacreature.southavailability}</Text>
-                                    </View>
-                                </View>
-
-                            </View>
-
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Time: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.time}</Text>
-                                </View>
-                            </View>
+                        />
+                    </Animatable.View>
+                    
+                    <Animatable.View
+                        animation='bounceInUp'
+                        duration={5000}
+                        delay={1000}
+                    >
+                        <Card
+                            title= {seacreature.name}
+                            titleStyle={{
+                                fontFamily: 'Fink-Heavy',
+                                fontWeight: 'normal',
+                                fontSize: 25
+                            }}
+                            containerStyle={{
+                                backgroundColor: '#FFE4B5', 
+                                margin: 10,
+                                borderRadius: 20,
+                                overflow: 'hidden',
+                                shadowColor: '#000',
+                                shadowOffset: {
+                                    width: 5,
+                                    height: 5
+                                },
+                                shadowOpacity: 0.25,
+                                shadowRadius: 5,
+                                elevation: 9
+                                }}
+                            >
                             
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Speed: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.speed}</Text>
-                                </View>
-                            </View>
+                            <View style={{margin: 5}}>
+                                <View style={styles.viewContainer}>
 
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Shadow:</Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.shadow}</Text>
-                                </View>
-                            </View>
+                                    <Text style={styles.viewLabelText}>Region Availability:</Text>
 
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Price: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.price} bells</Text>
-                                </View>
-                            </View>
+                                    <View style={{flexDirection: 'row'}}>
+                                        <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                            <Text style={styles.viewLabelText}>North:</Text>
+                                        </View>
+                                        <View style={styles.textContainer}>
+                                            <Text style={styles.textInfo}>{seacreature.northavailability}</Text>
+                                        </View>
+                                    </View>
 
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Your catchphrase:</Text>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.catchphrase}</Text>
-                                </View>
-                            </View>
+                                    <View style={{flexDirection: 'row'}}>
+                                        <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                            <Text style={styles.viewLabelText}>South:</Text>
+                                        </View>
+                                        <View style={styles.textContainer}>
+                                            <Text style={styles.textInfo}>{seacreature.southavailability}</Text>
+                                        </View>
+                                    </View>
 
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Time: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.time}</Text>
+                                    </View>
+                                </View>
                                 
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{seacreature.museumphrase}</Text>
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Speed: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.speed}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Shadow:</Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.shadow}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Price: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.price} bells</Text>
+                                    </View>
+                                </View>
+
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Your catchphrase:</Text>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.catchphrase}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                    
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{seacreature.museumphrase}</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
 
-                        <View style={{alignItems: 'center'}}>
-                            <Icon
-                                name={props.seacreatureDonation ? 'check-circle-o' : 'circle-o'}
-                                type='font-awesome'
-                                color='#2E8B57'
-                                raised
-                                reverse
-                                size = {30}
-                                onPress={() => props.seacreatureDonation ? 
-                                    console.log('Already set as a favorite') : props.markSeaCreatureDonation()}
-                            />
-                        </View>
-                    </Card>
+                            <View style={{alignItems: 'center'}}>
+                                <Icon
+                                    name={props.seacreatureDonation ? 'check-circle-o' : 'circle-o'}
+                                    type='font-awesome'
+                                    color='#2E8B57'
+                                    raised
+                                    reverse
+                                    size = {30}
+                                    onPress={() => props.seacreatureDonation ? 
+                                        console.log('Already set as a favorite') : props.markSeaCreatureDonation()}
+                                />
+                            </View>
+                        </Card>
+                    </Animatable.View>
                 </ScrollView>
             </ImageBackground>
         );

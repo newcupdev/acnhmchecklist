@@ -4,6 +4,7 @@ import { Card, Tile, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postBugDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -31,138 +32,150 @@ function RenderBug(props) {
                 style={styles.image}
                 >
                 <ScrollView>
-                    <Tile
-                        imageSrc={{uri: bug.image}}
-                        featured
-                        imageProps={{
-                            resizeMode: "contain"
-                        }}
-                    />
-
-                    <Card
-                        title= {bug.name}
-                        titleStyle={{
-                            fontFamily: 'Fink-Heavy',
-                            fontWeight: 'normal',
-                            fontSize: 25
-                        }}
-                        containerStyle={{
-                            backgroundColor: '#FFE4B5', 
-                            margin: 10,
-                            borderRadius: 20,
-                            overflow: 'hidden',
-                            shadowColor: '#000',
-                            shadowOffset: {
-                                width: 5,
-                                height: 5
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 5,
-                            elevation: 9
+                    <Animatable.View
+                        animation='tada'
+                        duration={5000}
+                        delay={1000}
+                    >
+                        <Tile
+                            imageSrc={{uri: bug.image}}
+                            featured
+                            imageProps={{
+                                resizeMode: "contain"
                             }}
-                        >
-                        {/* wrapperStyle={{margin: 1}} */}
-
-                        <View style={{margin: 5}}>
+                        />
+                    </Animatable.View>
+                    
+                    <Animatable.View
+                        animation='bounceInUp'
+                        duration={5000}
+                        delay={1000}
+                    >
+                        <Card
+                            title= {bug.name}
+                            titleStyle={{
+                                fontFamily: 'Fink-Heavy',
+                                fontWeight: 'normal',
+                                fontSize: 25
+                            }}
+                            containerStyle={{
+                                backgroundColor: '#FFE4B5', 
+                                margin: 10,
+                                borderRadius: 20,
+                                overflow: 'hidden',
+                                shadowColor: '#000',
+                                shadowOffset: {
+                                    width: 5,
+                                    height: 5
+                                },
+                                shadowOpacity: 0.25,
+                                shadowRadius: 5,
+                                elevation: 9
+                                }}
+                            >
                             
-                            <View style={styles.viewContainer}>
 
-                                <Text style={styles.viewLabelText}>Region Availability:</Text>
-
-                                <View style={{flexDirection: 'row'}}>
-                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
-                                        <Text style={styles.viewLabelText}>North:</Text>
-                                    </View>
-                                    <View style={styles.textContainer}>
-                                        <Text style={styles.textInfo}>{bug.northavailability}</Text>
-                                    </View>
-                                </View>
-
-                                <View style={{flexDirection: 'row'}}>
-                                    <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
-                                        <Text style={styles.viewLabelText}>South:</Text>
-                                    </View>
-                                    <View style={styles.textContainer}>
-                                        <Text style={styles.textInfo}>{bug.southavailability}</Text>
-                                    </View>
-                                </View>
-
-                            </View>
-
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Time: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.time}</Text>
-                                </View>
-                            </View>
-                            
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Location: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.location}</Text>
-                                </View>
-                            </View>
-
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Rarity:</Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.rarity}</Text>
-                                </View>
-                            </View>
-
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Price: </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.price} bells</Text>
-                                </View>
-                            </View>
-
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Price (Flick): </Text>
-                                </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.flickprice} bells</Text>
-                                </View>
-                            </View>
-
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Your catchphrase:</Text>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.catchphrase}</Text>
-                                </View>
-                            </View>
-
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                            <View style={{margin: 5}}>
                                 
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{bug.museumphrase}</Text>
+                                <View style={styles.viewContainer}>
+
+                                    <Text style={styles.viewLabelText}>Region Availability:</Text>
+
+                                    <View style={{flexDirection: 'row'}}>
+                                        <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                            <Text style={styles.viewLabelText}>North:</Text>
+                                        </View>
+                                        <View style={styles.textContainer}>
+                                            <Text style={styles.textInfo}>{bug.northavailability}</Text>
+                                        </View>
+                                    </View>
+
+                                    <View style={{flexDirection: 'row'}}>
+                                        <View style={[styles.viewTextLabelContainer,{flex: 1}]}>
+                                            <Text style={styles.viewLabelText}>South:</Text>
+                                        </View>
+                                        <View style={styles.textContainer}>
+                                            <Text style={styles.textInfo}>{bug.southavailability}</Text>
+                                        </View>
+                                    </View>
+
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Time: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.time}</Text>
+                                    </View>
+                                </View>
+                                
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Location: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.location}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Rarity:</Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.rarity}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Price: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.price} bells</Text>
+                                    </View>
+                                </View>
+
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Price (Flick): </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.flickprice} bells</Text>
+                                    </View>
+                                </View>
+
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Your catchphrase:</Text>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.catchphrase}</Text>
+                                    </View>
+                                </View>
+
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                    
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{bug.museumphrase}</Text>
+                                    </View>
                                 </View>
                             </View>
-                        </View>
 
-                        <View style={{alignItems: 'center'}}>
-                            <Icon
-                                name={props.bugDonation ? 'check-circle-o' : 'circle-o'}
-                                type='font-awesome'
-                                color='#2E8B57'
-                                raised
-                                reverse
-                                size = {30}
-                                onPress={() => props.bugDonation ? 
-                                    console.log('Already set as a favorite') : props.markBugDonation()}
-                            />
-                        </View>
-                    </Card>
+                            <View style={{alignItems: 'center'}}>
+                                <Icon
+                                    name={props.bugDonation ? 'check-circle-o' : 'circle-o'}
+                                    type='font-awesome'
+                                    color='#2E8B57'
+                                    raised
+                                    reverse
+                                    size = {30}
+                                    onPress={() => props.bugDonation ? 
+                                        console.log('Already set as a favorite') : props.markBugDonation()}
+                                />
+                            </View>
+                        </Card>
+                    </Animatable.View>
                 </ScrollView>
             </ImageBackground>
         );
