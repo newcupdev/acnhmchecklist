@@ -31,9 +31,9 @@ function RenderFish(props) {
                 >
                 <ScrollView>
                     <Animatable.View
-                        animation='slideInRight'
+                        animation='bounceInRight'
                         duration={3000}
-                        delay={2000}
+                        delay={1500}
                     >
                         <Tile
                             imageSrc={{uri: fish.image}}
@@ -159,7 +159,7 @@ function RenderFish(props) {
                                 </View>
 
                                 <View style={styles.viewContainer}>
-                                    <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                    <Text style={styles.viewLabelText}>Blathers' Catchphrase:</Text>
                                     
                                     <View style={styles.textContainer}>
                                         <Text style={styles.textInfo}>{fish.museumphrase}</Text>

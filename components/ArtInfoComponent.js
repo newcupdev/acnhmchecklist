@@ -4,6 +4,7 @@ import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postArtDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -36,13 +37,24 @@ function RenderArt(props) {
                 <ScrollView>
 
                     <View style={{margin: 5, flexDirection: 'row'}}>
-                        <View style={styles.imageContainer}>
+                        <Animatable.View 
+                            style={styles.imageContainer}
+                            animation='bounceInLeft'
+                            duration={3000}
+                            delay={1000}
+                        >
                             <Image 
                                 style={{width: 150, height: 150}}
                                 source={{uri: art.image}} 
                                 />
-                        </View>
-                        <View style={{flex: 1}}>
+                        </Animatable.View>
+
+                        <Animatable.View 
+                            style={{flex: 1}}
+                            animation='bounceInRight'
+                            duration={3000}
+                            delay={1000}
+                        >
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
                                 <View style={styles.viewTextLabelContainer}>
                                     <Text style={styles.viewLabelText}>Buy Price: </Text>
@@ -59,70 +71,75 @@ function RenderArt(props) {
                                     <Text style={styles.textInfo}>{art.sellprice} bells</Text>
                                 </View>
                             </View>
-                        </View>
+                        </Animatable.View>
                     </View>
                     
-                    <Card
-                        title= {art.name}
-                        titleStyle={{
-                            fontFamily: 'Fink-Heavy',
-                            fontWeight: 'normal',
-                            fontSize: 25
-                        }}
-                        containerStyle={{
-                            backgroundColor: '#FFE4B5', 
-                            margin: 10,
-                            borderRadius: 20,
-                            overflow: 'hidden',
-                            shadowColor: '#000',
-                            shadowOffset: {
-                                width: 5,
-                                height: 5
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 5,
-                            elevation: 9
-                        }}
-                        >
-                        <View style={{margin: 5}}>
+                    <Animatable.View 
+                        style={{flex: 1}}
+                        animation='bounceInUp'
+                        duration={3000}
+                        delay={1000}
+                    >
+                        <Card
+                            title= {art.name}
+                            titleStyle={{
+                                fontFamily: 'Fink-Heavy',
+                                fontWeight: 'normal',
+                                fontSize: 25
+                            }}
+                            containerStyle={{
+                                backgroundColor: '#FFE4B5', 
+                                margin: 10,
+                                borderRadius: 20,
+                                overflow: 'hidden',
+                                shadowColor: '#000',
+                                shadowOffset: {
+                                    width: 5,
+                                    height: 5
+                                },
+                                shadowOpacity: 0.25,
+                                shadowRadius: 5,
+                                elevation: 9
+                            }}
+                            >
+                            <View style={{margin: 5}}>
 
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Does it have any fake copies?</Text>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{artWarning}</Text>
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Does it have any fake copies?</Text>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{artWarning}</Text>
+                                    </View>
                                 </View>
+
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Blathers' Description:</Text>
+                                    
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{art.museumphrase}</Text>
+                                    </View>
+                                </View>
+
                             </View>
 
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Blather's Description:</Text>
-                                
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{art.museumphrase}</Text>
-                                </View>
+                            
+                            {/* <Text>{artWarning}</Text>
+                            <Text style={styles.textLabel}>Blather's art description: </Text>
+                            <Text>{'\t'}{art.museumphrase}</Text> */}
+
+                            <View style={{alignItems: 'center'}}>
+                                <Icon
+                                    name={props.artDonation ? 'check-circle-o' : 'circle-o'}
+                                    type='font-awesome'
+                                    color='#2E8B57'
+                                    raised
+                                    reverse
+                                    size = {30}
+                                    onPress={() => props.artDonation ? 
+                                        console.log('Already set as a favorite') : props.markArtDonation()}
+                                />
                             </View>
-
-                        </View>
-
-                        
-                        {/* <Text>{artWarning}</Text>
-                        <Text style={styles.textLabel}>Blather's art description: </Text>
-                        <Text>{'\t'}{art.museumphrase}</Text> */}
-
-                        <View style={{alignItems: 'center'}}>
-                            <Icon
-                                name={props.artDonation ? 'check-circle-o' : 'circle-o'}
-                                type='font-awesome'
-                                color='#2E8B57'
-                                raised
-                                reverse
-                                size = {30}
-                                onPress={() => props.artDonation ? 
-                                    console.log('Already set as a favorite') : props.markArtDonation()}
-                            />
-                        </View>
-
-
-                    </Card>
+                        </Card>
+                    </Animatable.View>
                 </ScrollView>
             </ImageBackground>
         );

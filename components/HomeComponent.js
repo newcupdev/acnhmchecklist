@@ -63,8 +63,8 @@ const styles = StyleSheet.create({
         margin: 1,
         color: '#000',
         textShadowColor: "#fff",
-        textShadowOffset: {width: 0, height: 0},
-        textShadowRadius: 20,
+        textShadowOffset: {width: 3, height: 3},
+        textShadowRadius: 10,
         
     }
 });

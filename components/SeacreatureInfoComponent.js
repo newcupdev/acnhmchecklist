@@ -143,7 +143,7 @@ function RenderSeacreature(props) {
                                 </View>
 
                                 <View style={styles.viewContainer}>
-                                    <Text style={styles.viewLabelText}>Blather's Catchphrase:</Text>
+                                    <Text style={styles.viewLabelText}>Blathers' Catchphrase:</Text>
                                     
                                     <View style={styles.textContainer}>
                                         <Text style={styles.textInfo}>{seacreature.museumphrase}</Text>

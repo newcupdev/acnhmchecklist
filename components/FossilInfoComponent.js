@@ -4,6 +4,7 @@ import { Card, Icon } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { postFossilDonation } from '../redux/ActionCreators';
 import { baseUrl } from '../shared/baseUrl';
+import * as Animatable from 'react-native-animatable';
 
 const mapStateToProps = state => {
     return {
@@ -32,13 +33,24 @@ function RenderFossil(props) {
                 <ScrollView>
 
                 <View style={{margin: 5, flexDirection: 'row'}}>
-                        <View style={styles.imageContainer}>
+                        <Animatable.View 
+                            style={styles.imageContainer}
+                            animation='bounceIn'
+                            duration={3000}
+                            delay={1000}
+                        >
                             <Image 
                                 style={{width: 150, height: 150}}
                                 source={{uri: fossil.image}} 
                                 />
-                        </View>
-                        <View style={{flex: 1, justifyContent: 'center'}}>
+                        </Animatable.View>
+
+                        <Animatable.View 
+                            style={{flex: 1, justifyContent: 'center'}}
+                            animation='bounceInRight'
+                            duration={3000}
+                            delay={1000}
+                        >
                             <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
                                 <View style={styles.viewTextLabelContainer}>
                                     <Text style={styles.viewLabelText}>Price: </Text>
@@ -47,67 +59,73 @@ function RenderFossil(props) {
                                     <Text style={styles.textInfo}>{fossil.price} bells</Text>
                                 </View>
                             </View>
-                        </View>
+                        </Animatable.View>
                     </View>
 
+                    <Animatable.View 
+                        style={{flex: 1, justifyContent: 'center'}}
+                        animation='bounceInUp'
+                        duration={2000}
+                        delay={1000}
+                    >
+                        <Card
+                            title= {fossil.name}
+                            titleStyle={{
+                                fontFamily: 'Fink-Heavy',
+                                fontWeight: 'normal',
+                                fontSize: 25
+                            }}
+                            containerStyle={{
+                                backgroundColor: '#FFE4B5', 
+                                margin: 10,
+                                borderRadius: 20,
+                                overflow: 'hidden',
+                                shadowColor: '#000',
+                                shadowOffset: {
+                                    width: 5,
+                                    height: 5
+                                },
+                                shadowOpacity: 0.25,
+                                shadowRadius: 5,
+                                elevation: 9
+                            }}
+                            >
+                            
+                            <View style={{margin: 5}}>
 
-                    <Card
-                        title= {fossil.name}
-                        titleStyle={{
-                            fontFamily: 'Fink-Heavy',
-                            fontWeight: 'normal',
-                            fontSize: 25
-                        }}
-                        containerStyle={{
-                            backgroundColor: '#FFE4B5', 
-                            margin: 10,
-                            borderRadius: 20,
-                            overflow: 'hidden',
-                            shadowColor: '#000',
-                            shadowOffset: {
-                                width: 5,
-                                height: 5
-                            },
-                            shadowOpacity: 0.25,
-                            shadowRadius: 5,
-                            elevation: 9
-                        }}
-                        >
-                        
-                        <View style={{margin: 5}}>
+                                <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
+                                    <View style={styles.viewTextLabelContainer}>
+                                        <Text style={styles.viewLabelText}>Part of: </Text>
+                                    </View>
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{fossil.partof}</Text>
+                                    </View>
+                                </View>
 
-                            <View style={[styles.viewContainer, {flexDirection: 'row'}]}>
-                                <View style={styles.viewTextLabelContainer}>
-                                    <Text style={styles.viewLabelText}>Part of: </Text>
+                                <View style={styles.viewContainer}>
+                                    <Text style={styles.viewLabelText}>Blathers' Description:</Text>
+                                    
+                                    <View style={styles.textContainer}>
+                                        <Text style={styles.textInfo}>{fossil.museumphrase}</Text>
+                                    </View>
                                 </View>
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{fossil.partof}</Text>
-                                </View>
+
                             </View>
 
-                            <View style={styles.viewContainer}>
-                                <Text style={styles.viewLabelText}>Blather's Description:</Text>
-                                
-                                <View style={styles.textContainer}>
-                                    <Text style={styles.textInfo}>{fossil.museumphrase}</Text>
-                                </View>
+                            <View style={{alignItems: 'center'}}>
+                                <Icon
+                                    name={props.fossilDonation ? 'check-circle-o' : 'circle-o'}
+                                    type='font-awesome'
+                                    color='#2E8B57'
+                                    raised
+                                    reverse
+                                    size = {30}
+                                    onPress={() => props.fossilDonation ? 
+                                        console.log('Already set as a favorite') : props.markFossilDonation()}
+                                />
                             </View>
-
-                        </View>
-
-                        <View style={{alignItems: 'center'}}>
-                            <Icon
-                                name={props.fossilDonation ? 'check-circle-o' : 'circle-o'}
-                                type='font-awesome'
-                                color='#2E8B57'
-                                raised
-                                reverse
-                                size = {30}
-                                onPress={() => props.fossilDonation ? 
-                                    console.log('Already set as a favorite') : props.markFossilDonation()}
-                            />
-                        </View>
-                    </Card>
+                        </Card>
+                    </Animatable.View>
                 </ScrollView>
             </ImageBackground>
         );
